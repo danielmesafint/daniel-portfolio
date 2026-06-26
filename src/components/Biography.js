@@ -57,7 +57,7 @@ const Biography = () => {
               <div className="relative mb-6">
                 <div className="w-48 h-48 mx-auto rounded-xl overflow-hidden shadow-xl border-4 border-white/20">
                   <img
-                    src="/profile_photo.png"
+                    src="/daniel-profile-latest.png"
                     alt="Dr. Daniel Mesafint"
                     className="w-full h-full object-cover"
                   />

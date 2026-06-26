@@ -301,11 +301,11 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
         : 'bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/30'
     }`}>
       <div className="w-full px-2 sm:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-16 min-w-0">
+        <div className="flex items-center justify-between h-16">
           {/* Left side - Navigation */}
-          <div className="flex items-center flex-1 min-w-0 mr-2">
+          <div className="flex items-center flex-1 max-w-4xl mr-4">
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1 flex-1 min-w-0 overflow-hidden">
+            <div className="hidden lg:flex items-center space-x-1 flex-wrap">
               {navItems.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.type === 'direct' ? (
