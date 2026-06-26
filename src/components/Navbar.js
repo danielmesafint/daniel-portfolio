@@ -301,11 +301,11 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
         : 'bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/30'
     }`}>
       <div className="w-full px-2 sm:px-4 lg:px-6">
-        <div className="flex items-center justify-between h-14 min-w-0">
+        <div className="flex items-center justify-between h-16 min-w-0">
           {/* Left side - Navigation */}
-          <div className="flex items-center flex-1 min-w-0">
+          <div className="flex items-center flex-1 min-w-0 mr-2">
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2 flex-1 min-w-0">
+            <div className="hidden lg:flex items-center space-x-1 flex-1 min-w-0 overflow-hidden">
               {navItems.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.type === 'direct' ? (
@@ -315,7 +315,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                         e.preventDefault();
                         scrollToSection(item.href);
                       }}
-                      className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                      className={`px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                         activeSection === item.id
                           ? 'text-blue-400 bg-blue-500/10 rounded-md'
                           : 'text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-md'
@@ -326,7 +326,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                   ) : (
                     <>
                       <button
-                        className={`flex items-center px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                        className={`flex items-center px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                           activeSection === item.id
                             ? 'text-blue-400 bg-blue-500/10 rounded-md'
                             : 'text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-md'
