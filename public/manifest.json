@@ -1,0 +1,97 @@
+{
+  "name": "Dr. Daniel Mesafint - AI Researcher Portfolio",
+  "short_name": "Daniel Mesafint",
+  "description": "Professional portfolio of Dr. Daniel Mesafint - AI Researcher, Assistant Professor, and Technology Transfer Coordinator specializing in Vision-Language Transformers and Agricultural AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1f2937",
+  "theme_color": "#ec4899",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "productivity", "business"],
+  "icons": [],
+  "shortcuts": [
+    {
+      "name": "Research Publications",
+      "short_name": "Publications",
+      "description": "View latest research publications and papers",
+      "url": "/#publications",
+      "icons": [
+        {
+          "src": "/icons/shortcut-publications.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Projects Portfolio",
+      "short_name": "Projects",
+      "description": "Explore AI and agricultural technology projects",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "/icons/shortcut-projects.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Information",
+      "short_name": "Contact",
+      "description": "Get in touch for collaborations",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/icons/shortcut-contact.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Latest Blog Posts",
+      "short_name": "Blog",
+      "description": "Read latest insights and articles",
+      "url": "/#blog",
+      "icons": [
+        {
+          "src": "/icons/shortcut-blog.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home page showing research focus and expertise"
+    },
+    {
+      "src": "/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile view of the portfolio homepage"
+    },
+    {
+      "src": "/screenshots/publications.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Research publications and papers section"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://daniel-mesafint-portfolio.com"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}
