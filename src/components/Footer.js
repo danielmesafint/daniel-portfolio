@@ -41,7 +41,6 @@ const Footer = () => {
   const academicLinks = [
     { name: 'Google Scholar', href: 'https://scholar.google.com/citations?user=daniel-mesafint' },
     { name: 'ResearchGate', href: 'https://www.researchgate.net/profile/Daniel-Mesafint' },
-    { name: 'ORCID', href: 'https://orcid.org/0000-0000-0000-0000' },
     { name: 'Academia.edu', href: 'https://university.academia.edu/danielmesafint' }
   ];
 

@@ -15,7 +15,7 @@ const Blog = () => {
       readTime: "8 min read",
       category: "AI & Healthcare",
       tags: ["AI", "Healthcare", "Machine Learning", "Medical Technology"],
-      image: "./all_research_images/the_future_ai_healthcare.png",
+      image: "./all_research_images/the_future_ai_healthcare.jpg",
       featured: true
     },
     {
@@ -28,7 +28,7 @@ const Blog = () => {
       readTime: "12 min read",
       category: "Machine Learning",
       tags: ["ML", "Data Engineering", "Python", "MLOps"],
-      image: "./all_research_images/building_scalable_ml_pipelines.png",
+      image: "./all_research_images/building_scalable_ml_pipelines.jpg",
       featured: false
     },
     {
@@ -41,7 +41,7 @@ const Blog = () => {
       readTime: "10 min read",
       category: "Research",
       tags: ["Research", "Statistics", "Data Science", "Methodology"],
-      image: "./all_research_images/research_methodology_in-datascience.png",
+      image: "./all_research_images/research_methodology_in-datascience.jpg",
       featured: false
     },
     {
@@ -54,7 +54,7 @@ const Blog = () => {
       readTime: "15 min read",
       category: "Agricultural Technology",
       tags: ["Climate-Smart Agriculture", "Irrigation", "Sustainability", "IoT", "Water Management"],
-      image: "./all_research_images/climate_smart_irrigation.png",
+      image: "./all_research_images/climate_smart_irrigation.jpg",
       featured: false
     },
     {
@@ -67,7 +67,7 @@ const Blog = () => {
       readTime: "18 min read",
       category: "Agricultural AI",
       tags: ["Machine Learning", "Computer Vision", "Crop Disease", "Food Security", "Mobile Technology"],
-      image: "./all_research_images/agri_resilience.png",
+      image: "./all_research_images/agri_resilience.jpg",
       featured: true
     }
   ]);
@@ -199,10 +199,6 @@ const Blog = () => {
               <p className="text-lg text-gray-300 mb-6">{article.excerpt}</p>
               <div className="text-gray-300 leading-relaxed">
                 {article.content}
-                <br /><br />
-                This is a sample article content. In a real implementation, you would fetch the full article content from your CMS or database.
-                <br /><br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </div>
             </div>
 

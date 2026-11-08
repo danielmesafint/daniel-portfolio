@@ -119,8 +119,8 @@ function showUpdateAvailableNotification() {
   if ('Notification' in window && Notification.permission === 'granted') {
     new Notification('Portfolio Update Available', {
       body: 'A new version of the portfolio is available. Refresh to update.',
-      icon: '/icons/icon-192x192.png',
-      badge: '/icons/badge-72x72.png',
+      icon: '/logo192.png',
+      badge: '/logo192.png',
       tag: 'update-available',
       requireInteraction: true,
       actions: [
@@ -146,8 +146,8 @@ function showOfflineReadyNotification() {
   if ('Notification' in window && Notification.permission === 'granted') {
     new Notification('Portfolio Ready for Offline Use', {
       body: 'The portfolio has been cached and is now available offline.',
-      icon: '/icons/icon-192x192.png',
-      badge: '/icons/badge-72x72.png',
+      icon: '/logo192.png',
+      badge: '/logo192.png',
       tag: 'offline-ready'
     });
   }

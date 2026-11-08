@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X, Sun, Moon, ChevronDown, Search, Globe, Settings } from 'lucide-react';
 import ThemeSwitcher from './ThemeSwitcher';
+import { isSectionVisible } from '../config/sections';
 import { useTranslation } from 'react-i18next';
 import navigationHandler from '../utils/NavigationHandler';
 
@@ -169,7 +170,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
         { name: 'Professional Experience', href: '#about-experience' },
         { name: 'Editorial Roles', href: '#about-editorial' },
         { name: 'Leadership', href: '#about-leadership' },
-        { name: 'Gallery', href: '#about-gallery' }
+        ...(isSectionVisible('gallery') ? [{ name: 'Gallery', href: '#about-gallery' }] : [])
       ]
     },
     { 

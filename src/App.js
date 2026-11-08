@@ -6,6 +6,7 @@ import Home from './components/Home';
 import LoadingScreen from './components/LoadingScreen';
 import GlobalThemeSwitcher from './components/GlobalThemeSwitcher';
 import Footer from './components/Footer';
+import { isSectionVisible } from './config/sections';
 // StudentModule removed for production clean version
 
 import './utils/i18n';
@@ -141,7 +142,7 @@ function App() {
   // Track active section based on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'experience', 'research', 'publications', 'projects', 'teaching', 'services', 'resources', 'portfolio', 'testimonials', 'blog', 'news', 'awards', 'gallery', 'contact'];
+      const sections = ['hero', 'about', 'experience', 'research', 'publications', 'projects', 'teaching', 'services', 'resources', 'portfolio', 'testimonials', 'blog', 'news', 'awards', 'gallery', 'contact'].filter(isSectionVisible);
       
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -313,11 +314,13 @@ function App() {
                   </section>
 
                   {/* Section 11: Testimonials */}
-                  <section id="testimonials">
-                    <Suspense fallback={<ComponentFallback />}>
-                      <Testimonials />
-                    </Suspense>
-                  </section>
+                  {isSectionVisible('testimonials') && (
+                    <section id="testimonials">
+                      <Suspense fallback={<ComponentFallback />}>
+                        <Testimonials />
+                      </Suspense>
+                    </section>
+                  )}
 
                   {/* Section 12: Blog */}
                   <section id="blog">
@@ -327,11 +330,13 @@ function App() {
                   </section>
 
                   {/* Section 13: News */}
-                  <section id="news">
-                    <Suspense fallback={<ComponentFallback />}>
-                      <News />
-                    </Suspense>
-                  </section>
+                  {isSectionVisible('news') && (
+                    <section id="news">
+                      <Suspense fallback={<ComponentFallback />}>
+                        <News />
+                      </Suspense>
+                    </section>
+                  )}
 
                   {/* Section 14: Awards */}
                   <section id="awards">
@@ -341,11 +346,13 @@ function App() {
                   </section>
 
                   {/* Section 15: Gallery */}
-                  <section id="gallery">
-                    <Suspense fallback={<ComponentFallback />}>
-                      <Gallery />
-                    </Suspense>
-                  </section>
+                  {isSectionVisible('gallery') && (
+                    <section id="gallery">
+                      <Suspense fallback={<ComponentFallback />}>
+                        <Gallery />
+                      </Suspense>
+                    </section>
+                  )}
 
                   {/* Section 16: Contact */}
                   <section id="contact">

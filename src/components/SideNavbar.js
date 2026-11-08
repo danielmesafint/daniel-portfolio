@@ -34,6 +34,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import navigationHandler from '../utils/NavigationHandler';
+import { STUDENT_PORTAL_ENABLED, isSectionVisible } from '../config/sections';
 
 const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => {
   const { t } = useTranslation();
@@ -65,7 +66,7 @@ const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => 
         { name: 'Professional Experience', href: '#about-experience', icon: Briefcase },
         { name: 'Editorial Roles', href: '#about-editorial', icon: BookOpen },
         { name: 'Leadership', href: '#about-leadership', icon: Award },
-        { name: 'Gallery', href: '#about-gallery', icon: Camera }
+        ...(isSectionVisible('gallery') ? [{ name: 'Gallery', href: '#about-gallery', icon: Camera }] : [])
       ]
     },
     { 
@@ -409,7 +410,7 @@ const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => 
 
         
         <nav className="space-y-0.5 pb-8">
-          {navigationItems.map((item) => {
+          {navigationItems.filter((item) => item.href !== '/student' || STUDENT_PORTAL_ENABLED).map((item) => {
             const Icon = item.icon;
             const isActive = currentActiveSection === item.id || 
               (item.id === 'home' && currentActiveSection === 'hero') ||

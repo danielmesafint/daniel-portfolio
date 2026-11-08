@@ -20,66 +20,66 @@ const Portfolio = () => {
       id: 1,
       title: 'Vision-Language Transformer for Medical Imaging',
       category: 'research',
-      image: '/api/placeholder/400/300',
+      image: '/all_project_images/vision_language_transformer.jpg',
       description: 'Advanced AI model for medical image analysis using vision-language transformers.',
       technologies: ['PyTorch', 'Transformers', 'Computer Vision', 'Healthcare AI'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: true
     },
     {
       id: 2,
       title: 'AI-Powered Academic Portfolio Website',
       category: 'web',
-      image: '/api/placeholder/400/300',
+      image: '/academic_portal.png',
       description: 'Modern, responsive portfolio website with AI chatbot integration.',
       technologies: ['React', 'Node.js', 'AI Integration', 'Responsive Design'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: true
     },
     {
       id: 3,
       title: 'Explainable AI Dashboard',
       category: 'ai',
-      image: '/api/placeholder/400/300',
+      image: '/all_project_images/dataviz_pro.jpg',
       description: 'Interactive dashboard for explaining AI model decisions and predictions.',
       technologies: ['Python', 'Streamlit', 'XAI', 'Data Visualization'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: false
     },
     {
       id: 4,
       title: 'Research Collaboration Platform',
       category: 'web',
-      image: '/api/placeholder/400/300',
+      image: '/all_project_images/ml_pipeline_builder.jpg',
       description: 'Platform connecting researchers worldwide for collaborative projects.',
       technologies: ['React', 'Firebase', 'Real-time Chat', 'Cloud Functions'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: false
     },
     {
       id: 5,
       title: 'Mobile Learning Assistant',
       category: 'mobile',
-      image: '/api/placeholder/400/300',
+      image: '/all_project_images/ethiopian_nlp.jpg',
       description: 'AI-powered mobile app for personalized learning experiences.',
       technologies: ['React Native', 'TensorFlow Lite', 'Mobile AI', 'Education'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: false
     },
     {
       id: 6,
       title: 'Healthcare Prediction Model',
       category: 'ai',
-      image: '/api/placeholder/400/300',
+      image: '/all_project_images/face_emotion_spotify.jpg',
       description: 'Machine learning model for early disease prediction and diagnosis.',
       technologies: ['Python', 'Scikit-learn', 'Healthcare Data', 'Predictive Analytics'],
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: '',
+      githubUrl: '',
       featured: true
     }
   ];
@@ -146,6 +146,7 @@ const Portfolio = () => {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   {item.featured && (
@@ -155,22 +156,26 @@ const Portfolio = () => {
                   )}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-4">
-                      <motion.a
+                      {item.liveUrl && (<motion.a
                         href={item.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-white text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
                         <Eye className="w-5 h-5" />
-                      </motion.a>
-                      <motion.a
+                      </motion.a>)}
+                      {item.githubUrl && (<motion.a
                         href={item.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-white text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
                         <Github className="w-5 h-5" />
-                      </motion.a>
+                      </motion.a>)}
                     </div>
                   </div>
                 </div>
@@ -196,27 +201,33 @@ const Portfolio = () => {
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Buttons (shown only when real links exist) */}
+                  {(item.liveUrl || item.githubUrl) && (
                   <div className="flex gap-4">
-                    <motion.a
+                    {item.liveUrl && (<motion.a
                       href={item.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded-lg font-medium transition-colors text-center flex items-center justify-center"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View Live
-                    </motion.a>
-                    <motion.a
+                    </motion.a>)}
+                    {item.githubUrl && (<motion.a
                       href={item.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 py-2 px-4 rounded-lg font-medium transition-colors text-center flex items-center justify-center"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <Github className="w-4 h-4 mr-2" />
                       Code
-                    </motion.a>
+                    </motion.a>)}
                   </div>
+                  )}
                 </div>
               </motion.div>
             ))}

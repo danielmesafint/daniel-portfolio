@@ -301,7 +301,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.4 }}
             >
-              <div className="flex justify-center sm:justify-start gap-2">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                 {socialLinks.map(({ iconSrc, href, label, ariaLabel, iconType }, index) => (
                   <motion.a
                     key={iconType}
@@ -373,7 +373,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
                 {/* Profile Image with no background */}
                 <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden flex items-center justify-center">
                   <img
-                    src="/profile_photo.png"
+                    src="/profile_photo.jpg"
                     alt="Dr. Daniel Mesafint"
                     className="w-full h-full object-contain"
                     style={{

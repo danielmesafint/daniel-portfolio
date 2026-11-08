@@ -10,7 +10,7 @@ const FeaturedResearch = () => {
     {
       title: "AI-Powered Educational Assessment Systems",
       description: "Developing intelligent systems for automated assessment and personalized learning pathways in higher education.",
-      image: "/all_research_images/ai_education.jpg",
+      image: "/all_research_images/research_methodology_in-datascience.jpg",
       category: "AI in Education",
       date: "2024",
       collaborators: 3,
@@ -20,7 +20,7 @@ const FeaturedResearch = () => {
     {
       title: "Machine Learning for Agricultural Optimization",
       description: "Implementing ML algorithms to optimize crop yield prediction and resource management in Ethiopian agriculture.",
-      image: "/all_research_images/ml_agriculture.jpg",
+      image: "/all_research_images/agri_resilience.jpg",
       category: "Agricultural AI",
       date: "2023",
       collaborators: 5,
@@ -30,7 +30,7 @@ const FeaturedResearch = () => {
     {
       title: "Natural Language Processing for Amharic Text",
       description: "Advancing NLP techniques for Ethiopian languages with focus on sentiment analysis and text classification.",
-      image: "/all_research_images/nlp_amharic.jpg",
+      image: "/all_project_images/ethiopian_nlp.jpg",
       category: "NLP",
       date: "2024",
       collaborators: 4,

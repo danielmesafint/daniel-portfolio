@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { isSectionVisible, STUDENT_PORTAL_ENABLED } from '../config/sections';
 import { useTranslation } from 'react-i18next';
 import { 
   BookOpen, 
@@ -114,6 +115,10 @@ const QuickLinks = () => {
     }
   ];
 
+  const visibleLinks = quickLinks.filter((link) =>
+    link.link === '/student' ? STUDENT_PORTAL_ENABLED : isSectionVisible(link.link.replace('#', ''))
+  );
+
   const handleLinkClick = (link) => {
     if (link.isExternal || link.link.startsWith('/')) {
       // Handle external links or routes
@@ -149,7 +154,7 @@ const QuickLinks = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {quickLinks.map((link, index) => (
+          {visibleLinks.map((link, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

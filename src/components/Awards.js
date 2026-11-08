@@ -361,7 +361,7 @@ const Awards = () => {
               Start a Collaboration
             </motion.button>
             <motion.a
-              href="/research-portfolio.pdf"
+              href="/Dr_Daniel_Mesafint_CV.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -8,6 +8,7 @@ import ProfessionalExperience from './ProfessionalExperience';
 import EditorialRoles from './EditorialRoles';
 import Leadership from './Leadership';
 import Gallery from './Gallery';
+import { isSectionVisible } from '../config/sections';
 
 const About = () => {
   const { t } = useTranslation();
@@ -74,9 +75,11 @@ const About = () => {
       </div>
       
       {/* Gallery Section */}
-      <div id="about-gallery">
-        <Gallery />
-      </div>
+      {isSectionVisible('gallery') && (
+        <div id="about-gallery">
+          <Gallery />
+        </div>
+      )}
     </div>
   );
 };
