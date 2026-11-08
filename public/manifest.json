@@ -1,18 +1,13 @@
 {
-  "name": "Dr. Daniel Mesafint - AI Researcher Portfolio",
-  "short_name": "Daniel Mesafint",
-  "description": "Professional portfolio of Dr. Daniel Mesafint - AI Researcher, Assistant Professor, and Technology Transfer Coordinator specializing in Vision-Language Transformers and Agricultural AI",
+  "name": "Dr. Daniel Mesafint",
+  "short_name": "Dr. Daniel",
+  "description": "Portfolio of Dr. Daniel Mesafint Belete, Assistant Professor of Computer Science at Debre Tabor University.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#111827",
-  "theme_color": "#1E3A8A",
+  "background_color": "#ffffff",
+  "theme_color": "#0f2a4a",
   "scope": "/",
   "lang": "en",
-  "categories": [
-    "education",
-    "productivity",
-    "business"
-  ],
   "icons": [
     {
       "src": "/logo192.png",
@@ -27,58 +22,5 @@
       "purpose": "any maskable"
     }
   ],
-  "shortcuts": [
-    {
-      "name": "Research Publications",
-      "short_name": "Publications",
-      "description": "View latest research publications and papers",
-      "url": "/#publications",
-      "icons": [
-        {
-          "src": "/logo192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Projects Portfolio",
-      "short_name": "Projects",
-      "description": "Explore AI and agricultural technology projects",
-      "url": "/#projects",
-      "icons": [
-        {
-          "src": "/logo192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Contact Information",
-      "short_name": "Contact",
-      "description": "Get in touch for collaborations",
-      "url": "/#contact",
-      "icons": [
-        {
-          "src": "/logo192.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Latest Blog Posts",
-      "short_name": "Blog",
-      "description": "Read latest insights and articles",
-      "url": "/#blog",
-      "icons": [
-        {
-          "src": "/logo192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
-  ],
-  "prefer_related_applications": false,
-  "edge_side_panel": {
-    "preferred_width": 400
-  }
+  "prefer_related_applications": false
 }

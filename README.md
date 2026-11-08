@@ -1,25 +1,22 @@
-# Dr. Daniel Mesafint - Portfolio Website (Production Ready)
+# Dr. Daniel Mesafint - Portfolio
 
-## Overview
-This is the cleaned, production-ready version of Dr. Daniel Mesafint's portfolio website containing only the essential files needed for deployment.
+Personal academic portfolio of Dr. Daniel Mesafint Belete, built with React and Vite and deployed on Vercel.
 
-## Structure
-- `/src` - React source code (only used components)
-- `/public` - Static assets (only referenced files)
-- Root configuration files
+## Editing content
 
-## Deployment Ready
-This folder contains only the files actually used by the application, removing all unused components, assets, and documentation files.
+All text, publications, projects, courses and links live in `src/data/profile.js`.
+Images are in `public/images/`, and the CV is `public/Dr_Daniel_Mesafint_CV.pdf`.
 
-## Build Commands
+## AI assistant
+
+`api/chat.js` is a Vercel function that answers visitor questions with Claude, using the facts in `api/_knowledge.js`.
+Set `ANTHROPIC_API_KEY` in the Vercel project's environment variables to switch it on (optional `CHAT_MODEL`, default `claude-haiku-5-5`).
+Without a key the site uses a simple built-in assistant.
+
+## Commands
+
 ```bash
 npm install
-npm run build
-npm start
+npm run dev      # local development
+npm run build    # production build into dist/
 ```
-
-## Deployment Options
-- Vercel: `vercel --prod`
-- Netlify: Deploy the `build` folder
-- AWS S3: Upload build folder contents
-- GitHub Pages: Use `npm run build` then deploy build folder
