@@ -18,6 +18,7 @@ import {
 const ChatBot = () => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const serverUnavailable = useRef(false);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -938,7 +939,7 @@ const ChatBot = () => {
           actions: [
             { text: getTranslationInLanguage('chatbot.actions.sendEmail', detectedLanguage), action: () => scrollToSection('#contact') },
             { text: getTranslationInLanguage('chatbot.actions.scheduleMeeting', detectedLanguage), action: () => window.open('mailto:danielmesafint1985@gmail.com?subject=Consultation%20request', '_blank') },
-            { text: getTranslationInLanguage('chatbot.actions.linkedinProfile', detectedLanguage), action: () => window.open('https://www.linkedin.com/in/daniel-mesafint', '_blank') }
+            { text: getTranslationInLanguage('chatbot.actions.linkedinProfile', detectedLanguage), action: () => window.open('https://www.linkedin.com/in/danielmesafint', '_blank') }
           ]
         };
       },
@@ -1041,8 +1042,30 @@ const ChatBot = () => {
     handleIntelligentReply(type);
   };
 
-  const handleSendMessage = () => {
-    if (!inputMessage.trim()) return;
+  // Ask the /api/chat endpoint (Claude). Returns null when it is unavailable,
+  // so the built-in offline assistant can answer instead.
+  const askServer = async (history) => {
+    if (serverUnavailable.current) return null;
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      if (res.status === 503 || res.status === 404 || res.status === 405) {
+        serverUnavailable.current = true; // not configured on this deployment
+        return null;
+      }
+      if (!res.ok) return null;
+      const data = await res.json();
+      return typeof data.reply === 'string' && data.reply.trim() ? data.reply.trim() : null;
+    } catch (e) {
+      return null;
+    }
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isTyping) return;
 
     const userMessage = {
       id: Date.now(),
@@ -1056,23 +1079,35 @@ const ChatBot = () => {
     setInputMessage('');
     setIsTyping(true);
 
-    // Use the intelligent conversation system
+    const history = [...messages, userMessage]
+      .filter((m) => typeof m.content === 'string' && m.content.trim())
+      .map((m) => ({ role: m.type === 'user' ? 'user' : 'assistant', content: m.content }));
+
+    const serverReply = await askServer(history);
+    if (serverReply) {
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        type: 'bot',
+        content: serverReply,
+        timestamp: new Date()
+      }]);
+      setIsTyping(false);
+      return;
+    }
+
+    // Offline fallback: built-in keyword assistant
     setTimeout(() => {
-      // Analyze user input with advanced NLP
       const analysis = analyzeUserInput(currentInput);
       const response = generateResponse(analysis);
-      
-      const botMessage = {
+      setMessages(prev => [...prev, {
         id: Date.now() + 1,
         type: 'bot',
         content: response.content,
         actions: response.actions,
         timestamp: new Date()
-      };
-
-      setMessages(prev => [...prev, botMessage]);
+      }]);
       setIsTyping(false);
-    }, Math.random() * 1000 + 800); // Variable response time for natural conversation feel
+    }, 600);
   };
 
   const handleKeyPress = (e) => {
@@ -1148,15 +1183,15 @@ const ChatBot = () => {
             aria-label="AI Assistant"
             className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60] grido-card rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-primary-500/30"
             style={{
-              width: 'min(24rem, calc(100vw - 2rem))',
-              height: 'min(34rem, calc(100vh - 7rem))',
+              width: 'min(20rem, calc(100vw - 2rem))',
+              height: 'min(27rem, calc(100vh - 8rem))',
               backgroundColor: 'rgba(15, 23, 42, 0.98)'
             }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-primary-600/20 to-grido-purple/20 border-b border-primary-500/30 p-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-primary-600/20 to-grido-purple/20 border-b border-primary-500/30 px-3 py-2 flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
                   <img
                     src="/ai_ask_me_5.png"
                     alt="AI Assistant"
@@ -1165,8 +1200,8 @@ const ChatBot = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">{t('chatbot.title')}</h3>
-                  <p className="text-white/80 text-sm">{t('chatbot.subtitle')}</p>
+                  <h3 className="text-white font-semibold text-sm leading-tight">{t('chatbot.title')}</h3>
+                  <p className="text-white/70 text-xs leading-tight">{t('chatbot.subtitle')}</p>
                 </div>
               </div>
               <motion.button
@@ -1182,7 +1217,7 @@ const ChatBot = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-3 space-y-3">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -1190,9 +1225,9 @@ const ChatBot = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[80%] ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
+                  <div className={`max-w-[88%] ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
                     <div className={`flex items-start space-x-2 ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
                         message.type === 'user' 
                           ? 'bg-accent-500' 
                           : 'bg-gradient-to-r from-primary-600 to-accent-500'
@@ -1209,7 +1244,7 @@ const ChatBot = () => {
                         )}
                       </div>
                       
-                      <div className={`rounded-2xl p-3 ${
+                      <div className={`rounded-2xl px-3 py-2 ${
                         message.type === 'user'
                           ? 'bg-accent-500 text-white'
                           : 'bg-neutral-700 text-gray-100'
@@ -1282,7 +1317,7 @@ const ChatBot = () => {
 
             {/* Quick Replies */}
             {messages.length === 1 && (
-              <div className="px-4 pb-2">
+              <div className="px-3 pb-2">
                 <div className="flex flex-wrap gap-2">
                   {quickReplies.map((reply, index) => (
                     <motion.button
@@ -1293,7 +1328,7 @@ const ChatBot = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={reply.action}
-                      className="px-3 py-1 bg-neutral-700 hover:bg-neutral-600 text-gray-300 text-sm rounded-full transition-colors"
+                      className="px-2.5 py-1 bg-neutral-700 hover:bg-neutral-600 text-gray-300 text-xs rounded-full transition-colors"
                     >
                       {reply.text}
                     </motion.button>
@@ -1303,7 +1338,7 @@ const ChatBot = () => {
             )}
 
             {/* Input */}
-            <div className="p-4 border-t border-neutral-700">
+            <div className="p-2.5 border-t border-neutral-700">
               <div className="flex space-x-2">
                 <input
                   type="text"

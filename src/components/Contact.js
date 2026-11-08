@@ -110,7 +110,7 @@ const Contact = () => {
       {
         iconSrc: `${baseUrl}/social_media-icons/linkedin.png?v=${timestamp}&r=${randomId}`,
         label: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/daniel-mesafint',
+        href: 'https://www.linkedin.com/in/danielmesafint',
         color: 'hover:text-blue-400'
       },
       {
@@ -122,7 +122,7 @@ const Contact = () => {
       {
         iconSrc: `${baseUrl}/social_media-icons/researchgate.png?v=${timestamp}&r=${randomId}`,
         label: 'ResearchGate',
-        href: 'https://www.researchgate.net/profile/Daniel-Mesafint',
+        href: 'https://www.researchgate.net/profile/Daniel-Belete',
         color: 'hover:text-green-400'
       },
       {

@@ -119,7 +119,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
       },
       {
         iconSrc: `${baseUrl}/linkedin.png`,
-        href: 'https://www.linkedin.com/in/daniel-mesafint',
+        href: 'https://www.linkedin.com/in/danielmesafint',
         label: 'LinkedIn Profile - Opens in new tab',
         ariaLabel: 'Visit Dr. Daniel Mesafint\'s LinkedIn profile',
         iconType: 'linkedin'
@@ -133,7 +133,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
       },
       {
         iconSrc: `${baseUrl}/researchgate.png`,
-        href: 'https://www.researchgate.net/profile/Daniel-Mesafint',
+        href: 'https://www.researchgate.net/profile/Daniel-Belete',
         label: 'ResearchGate Profile - Opens in new tab',
         ariaLabel: 'Visit Dr. Daniel Mesafint\'s ResearchGate profile',
         iconType: 'researchgate'
