@@ -160,3 +160,120 @@ textarea:focus {
   white-space: nowrap;
   border: 0;
 }
+/* ------------------------------------------------------------------
+   Theme recolouring
+   Components use fixed Tailwind colours, so these rules map the most
+   common background, accent and gradient classes onto the active
+   theme's CSS variables. The default theme is left untouched.
+   ------------------------------------------------------------------ */
+html:not(.theme-default) body,
+html:not(.theme-default) .bg-gray-900,
+html:not(.theme-default).dark .dark\:bg-gray-900,
+html:not(.theme-default) .bg-black,
+html:not(.theme-default) .bg-slate-900,
+html:not(.theme-default) .bg-neutral-900 {
+  background-color: var(--theme-background) !important;
+}
+
+html:not(.theme-default) .bg-gray-800,
+html:not(.theme-default).dark .dark\:bg-gray-800,
+html:not(.theme-default) .bg-slate-800,
+html:not(.theme-default) .bg-neutral-800,
+html:not(.theme-default) .bg-slate-800\/80,
+html:not(.theme-default) .bg-slate-800\/90,
+html:not(.theme-default) .bg-slate-800\/95 {
+  background-color: var(--theme-surface) !important;
+}
+
+html:not(.theme-default) .bg-gray-700,
+html:not(.theme-default).dark .dark\:bg-gray-700,
+html:not(.theme-default) .bg-slate-700,
+html:not(.theme-default) .bg-neutral-700 {
+  background-color: color-mix(in srgb, var(--theme-surface), white 8%) !important;
+}
+
+html:not(.theme-default) .bg-gray-700\/50,
+html:not(.theme-default) .bg-slate-700\/50 {
+  background-color: color-mix(in srgb, var(--theme-surface) 60%, transparent) !important;
+}
+
+/* Section gradients (e.g. from-gray-900 to-black) */
+html:not(.theme-default) .from-gray-900,
+html:not(.theme-default) .from-slate-900,
+html:not(.theme-default) .from-black {
+  --tw-gradient-from: var(--theme-background) var(--tw-gradient-from-position) !important;
+}
+html:not(.theme-default) .to-black,
+html:not(.theme-default) .to-gray-900,
+html:not(.theme-default) .to-gray-800,
+html:not(.theme-default) .to-slate-900 {
+  --tw-gradient-to: var(--theme-surface) var(--tw-gradient-to-position) !important;
+}
+html:not(.theme-default) .via-gray-900,
+html:not(.theme-default) .via-gray-800 {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--theme-surface) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+/* Accent text */
+html:not(.theme-default) .text-pink-400,
+html:not(.theme-default) .text-pink-500,
+html:not(.theme-default) .text-pink-600,
+html:not(.theme-default) .text-purple-400,
+html:not(.theme-default) .text-primary-400,
+html:not(.theme-default) .text-primary-500 {
+  color: var(--theme-primary) !important;
+}
+html:not(.theme-default) .text-blue-400,
+html:not(.theme-default) .text-blue-500,
+html:not(.theme-default) .text-accent-400,
+html:not(.theme-default) .text-cyan-400 {
+  color: var(--theme-accent) !important;
+}
+
+/* Accent backgrounds (buttons, badges) */
+html:not(.theme-default) .bg-pink-500,
+html:not(.theme-default) .bg-pink-600,
+html:not(.theme-default) .bg-purple-600,
+html:not(.theme-default) .bg-primary-500,
+html:not(.theme-default) .bg-primary-600 {
+  background-color: var(--theme-primary) !important;
+}
+html:not(.theme-default) .bg-blue-500,
+html:not(.theme-default) .bg-blue-600,
+html:not(.theme-default) .bg-blue-700,
+html:not(.theme-default) .bg-accent-500 {
+  background-color: var(--theme-accent) !important;
+}
+html:not(.theme-default) .bg-blue-500\/10,
+html:not(.theme-default) .bg-pink-500\/10 {
+  background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent) !important;
+}
+
+/* Accent borders */
+html:not(.theme-default) .border-pink-500,
+html:not(.theme-default) .border-primary-500,
+html:not(.theme-default) .border-primary-400,
+html:not(.theme-default) .border-blue-400,
+html:not(.theme-default) .border-blue-500 {
+  border-color: var(--theme-primary) !important;
+}
+
+/* Accent gradients (buttons, headings) */
+html:not(.theme-default) .from-pink-500,
+html:not(.theme-default) .from-pink-600,
+html:not(.theme-default) .from-blue-500,
+html:not(.theme-default) .from-blue-600,
+html:not(.theme-default) .from-purple-500,
+html:not(.theme-default) .from-primary-500,
+html:not(.theme-default) .from-primary-600 {
+  --tw-gradient-from: var(--theme-primary) var(--tw-gradient-from-position) !important;
+}
+html:not(.theme-default) .to-purple-600,
+html:not(.theme-default) .to-purple-500,
+html:not(.theme-default) .to-pink-500,
+html:not(.theme-default) .to-blue-500,
+html:not(.theme-default) .to-blue-600,
+html:not(.theme-default) .to-grido-purple,
+html:not(.theme-default) .to-accent-500 {
+  --tw-gradient-to: var(--theme-secondary) var(--tw-gradient-to-position) !important;
+}

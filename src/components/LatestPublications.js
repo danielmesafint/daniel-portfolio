@@ -2,48 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FileText, ExternalLink, Calendar, Users, Award } from 'lucide-react';
+import { publications as allPublications } from '../data/publications';
 
 const LatestPublications = () => {
   const { t } = useTranslation();
 
-  const publications = [
-    {
-      title: "Deep Learning Approaches for Educational Data Mining in Ethiopian Higher Education",
-      authors: "Daniel Mesafint, et al.",
-      journal: "International Journal of Educational Technology",
-      year: "2024",
-      type: "Journal Article",
-      citations: 15,
-      impact: "Q1",
-      abstract: "This study explores the application of deep learning techniques for mining educational data in Ethiopian universities...",
-      link: "#publications",
-      featured: true
-    },
-    {
-      title: "Machine Learning for Crop Yield Prediction: A Case Study in Ethiopian Agriculture",
-      authors: "Daniel Mesafint, A. Smith, B. Johnson",
-      journal: "Agricultural AI Conference",
-      year: "2024",
-      type: "Conference Paper",
-      citations: 8,
-      impact: "Core A",
-      abstract: "We present a comprehensive machine learning framework for predicting crop yields using satellite imagery and weather data...",
-      link: "#publications",
-      featured: false
-    },
-    {
-      title: "Natural Language Processing for Low-Resource Languages: Amharic Text Classification",
-      authors: "Daniel Mesafint, C. Williams",
-      journal: "Computational Linguistics Review",
-      year: "2023",
-      type: "Journal Article",
-      citations: 23,
-      impact: "Q2",
-      abstract: "This paper addresses the challenges of NLP for low-resource languages, specifically focusing on Amharic text classification...",
-      link: "#publications",
-      featured: true
-    }
-  ];
+  // Three most-cited real publications (see src/data/publications.js)
+  const TYPE_NAMES = { journal: 'Journal Article', conference: 'Conference Paper', chapter: 'Book Chapter' };
+  const publications = [...allPublications]
+    .sort((a, b) => b.citations - a.citations)
+    .slice(0, 3)
+    .map((p) => ({
+      title: p.title,
+      authors: p.authors.join(', '),
+      journal: p.venue,
+      year: String(p.year),
+      type: TYPE_NAMES[p.type],
+      citations: p.citations,
+      impact: p.indexed,
+      abstract: `${p.publisher}, ${p.details}.`,
+      featured: p.citations >= 10
+    }));
 
   return (
     <section className="py-16 bg-gray-50 dark:bg-gray-900">

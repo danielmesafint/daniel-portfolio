@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { openEmail, WHATSAPP_URL } from '../utils/contactLinks';
 import { useTranslation } from 'react-i18next';
 import { 
   Briefcase, 
@@ -369,7 +370,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <motion.button
+                <motion.button onClick={() => openEmail('Quote request')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-black px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -445,7 +446,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <motion.button
+                <motion.button onClick={() => openEmail('New project enquiry')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -507,7 +508,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <motion.button
+                <motion.button onClick={() => openEmail('Document review request')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -569,7 +570,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <motion.button
+                <motion.button onClick={() => openEmail('Collaboration opportunity')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 bg-purple-500 hover:bg-purple-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -645,7 +646,7 @@ const Services = () => {
                   </div>
                 </div>
 
-                <motion.button
+                <motion.button onClick={() => openEmail('Data analysis request')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
@@ -673,7 +674,7 @@ const Services = () => {
               Contact me to discuss your project requirements and get a customized proposal for your specific needs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <motion.button
+              <motion.button onClick={() => openEmail('Enquiry from your website')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 bg-accent-500 hover:bg-accent-400 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300"
@@ -681,7 +682,7 @@ const Services = () => {
                 <Mail size={20} />
                 <span>Send Email</span>
               </motion.button>
-              <motion.button
+              <motion.button onClick={() => window.open(WHATSAPP_URL, '_blank', 'noopener')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center space-x-2 border border-accent-500 hover:bg-accent-500 hover:text-black text-accent-400 px-6 py-3 rounded-lg font-semibold transition-all duration-300"

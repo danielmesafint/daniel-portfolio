@@ -52,12 +52,8 @@ const Footer = () => {
     { name: 'Facebook', href: 'https://www.facebook.com/dmesafint' }
   ];
 
-  const legalLinks = [
-    { name: 'Privacy Policy', href: '/privacy-policy' },
-    { name: 'Terms of Service', href: '/terms-of-service' },
-    { name: 'Cookie Policy', href: '/cookie-policy' },
-    { name: 'Accessibility', href: '/accessibility' }
-  ];
+  // Legal pages are not part of this site yet; add entries here when they exist.
+  const legalLinks = [];
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);

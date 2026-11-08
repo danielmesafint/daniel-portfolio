@@ -201,7 +201,7 @@ const QuickLinks = () => {
               Get In Touch
             </button>
             <button
-              onClick={() => window.open('/view-cv.html', '_blank')}
+              onClick={() => window.open('/Dr_Daniel_Mesafint_CV.pdf', '_blank')}
               className="border-2 border-white text-white hover:bg-white hover:text-pink-600 px-8 py-3 rounded-lg font-semibold transition-colors duration-300"
             >
               Download CV

@@ -238,14 +238,6 @@ const News = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <motion.button
-            className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View All News
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </motion.button>
         </motion.div>
       </div>
     </section>

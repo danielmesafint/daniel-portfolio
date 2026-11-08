@@ -16,6 +16,7 @@ import {
   Eye,
   ExternalLink
 } from 'lucide-react';
+import { openEmail } from '../utils/contactLinks';
 
 const Resources = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -388,15 +389,14 @@ const Resources = () => {
 
                 {/* Actions */}
                 <div className="flex gap-2">
-                  <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
+                  <button
+                    onClick={() => (resource.url
+                      ? window.open(resource.url, '_blank', 'noopener')
+                      : openEmail(`Resource request: ${resource.title}`, `Hello Dr. Daniel,\n\nCould you please share the resource titled ${resource.title}?\n\nThank you.`))}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200"
+                  >
                     <Download size={16} />
-                    Download
-                  </button>
-                  <button className="p-2 bg-slate-700 hover:bg-slate-600 text-gray-300 rounded-lg transition-colors duration-200">
-                    <Eye size={16} />
-                  </button>
-                  <button className="p-2 bg-slate-700 hover:bg-slate-600 text-gray-300 rounded-lg transition-colors duration-200">
-                    <ExternalLink size={16} />
+                    {resource.url ? 'Download' : 'Request by email'}
                   </button>
                 </div>
               </div>
@@ -412,8 +412,11 @@ const Resources = () => {
             <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
               Share your research materials, code, datasets, or educational content with the academic community.
             </p>
-            <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200">
-              Upload Resource
+            <button
+              onClick={() => openEmail('Resource contribution', 'Hello Dr. Daniel,\n\nI would like to share a resource with you.\n\nTitle:\nLink:')}
+              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200"
+            >
+              Share a resource by email
             </button>
           </div>
         </div>

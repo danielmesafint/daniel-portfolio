@@ -443,9 +443,7 @@ const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => 
                       handleNavigation(item.href, item.id, item.isExternal);
                       setExpandedMenu(null); // Close any open menus
                     } else {
-                      // For dropdown items, navigate to main section AND toggle dropdown
-                      handleNavigation(item.href, item.id, item.isExternal);
-                      // Toggle dropdown immediately on click
+                      // Dropdown items only open or close their sub-menu
                       setExpandedMenu(isExpanded ? null : item.id);
                     }
                     // Reset user click flag after a short delay
@@ -483,6 +481,12 @@ const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => 
                 {/* Dropdown Submenu - Only show for non-direct items */}
                 {isExpanded && item.type !== 'direct' && item.subItems && (
                   <div className="ml-6 space-y-0 animate-in slide-in-from-top-2 duration-200">
+                    <button
+                      onClick={() => handleNavigation(item.href, item.id, item.isExternal)}
+                      className="w-full flex items-start px-3 py-1.5 rounded-md text-xs font-semibold text-blue-300 hover:text-pink-400 min-h-[32px]"
+                    >
+                      {item.name} overview
+                    </button>
                     {item.subItems.map((subItem) => {
                       const SubIcon = subItem.icon;
                       return (

@@ -276,7 +276,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
               transition={{ duration: 0.6, delay: 1.2 }}
             >
               <motion.button
-                onClick={() => window.open('/view-cv.html', '_blank', 'noopener,noreferrer')}
+                onClick={() => window.open('/Dr_Daniel_Mesafint_CV.pdf', '_blank', 'noopener,noreferrer')}
                 className="bg-pink-500 hover:bg-pink-600 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold transition-all duration-300 text-center text-sm sm:text-base flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

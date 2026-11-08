@@ -867,7 +867,7 @@ const ChatBot = () => {
         content: getTranslationInLanguage('chatbot.responses.goodbye', detectedLanguage),
         actions: [
           { text: getTranslationInLanguage('chatbot.actions.contactDrDaniel', detectedLanguage), action: () => scrollToSection('#contact') },
-          { text: getTranslationInLanguage('chatbot.actions.viewCV', detectedLanguage), action: () => window.open('/view-cv.html', '_blank', 'noopener,noreferrer') }
+          { text: getTranslationInLanguage('chatbot.actions.viewCV', detectedLanguage), action: () => window.open('/Dr_Daniel_Mesafint_CV.pdf', '_blank', 'noopener,noreferrer') }
         ]
       };
     }
@@ -970,7 +970,7 @@ const ChatBot = () => {
         return {
           content: getTranslationInLanguage('chatbot.responses.background', detectedLanguage),
           actions: [
-            { text: getTranslationInLanguage('chatbot.actions.viewCV', detectedLanguage), action: () => window.open('/view-cv.html', '_blank', 'noopener,noreferrer') },
+            { text: getTranslationInLanguage('chatbot.actions.viewCV', detectedLanguage), action: () => window.open('/Dr_Daniel_Mesafint_CV.pdf', '_blank', 'noopener,noreferrer') },
             { text: getTranslationInLanguage('chatbot.actions.viewAwards', detectedLanguage), action: () => scrollToSection('#awards') },
             { text: getTranslationInLanguage('chatbot.actions.researchJourney', detectedLanguage), action: () => scrollToSection('#interactive-timeline') }
           ]

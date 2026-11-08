@@ -13,7 +13,7 @@ const FloatingMenu = () => {
       label: 'View My CV',
       action: () => {
         // Open CV in new tab using dedicated viewer
-        window.open('/view-cv.html', '_blank', 'noopener,noreferrer');
+        window.open('/Dr_Daniel_Mesafint_CV.pdf', '_blank', 'noopener,noreferrer');
       },
       color: 'from-primary-400 to-primary-600'
     },

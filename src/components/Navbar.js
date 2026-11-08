@@ -151,6 +151,21 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close any open dropdown when clicking outside the menu bar or pressing Escape
+  const navRef = useRef(null);
+  useEffect(() => {
+    const onDown = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) setActiveDropdown(null);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setActiveDropdown(null); };
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, []);
+
   const navItems = [
     { 
       name: 'Home', 
@@ -296,7 +311,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
   };
 
   return (
-    <nav className={`fixed top-0 lg:left-64 left-0 right-0 z-[9999] transition-all duration-300 ${
+    <nav ref={navRef} className={`fixed top-0 lg:left-64 left-0 right-0 z-[9999] transition-all duration-300 ${
       scrolled 
         ? 'bg-slate-800/95 backdrop-blur-md shadow-lg border-b border-slate-700/50' 
         : 'bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/30'
@@ -332,11 +347,12 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                             ? 'text-blue-400 bg-blue-500/10 rounded-md'
                             : 'text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-md'
                         }`}
-                        onClick={() => {
-                          // Navigate to main section when clicking the main menu item
-                          scrollToSection(item.href || `#${item.id}`);
-                          // Toggle dropdown
-                          setActiveDropdown(activeDropdown === item.name ? null : item.name);
+                        aria-haspopup="true"
+                        aria-expanded={activeDropdown === item.name}
+                        onClick={(e) => {
+                          // Open the dropdown only; the "Overview" entry goes to the section
+                          e.stopPropagation();
+                          setActiveDropdown(item.name);
                         }}
                         onMouseEnter={() => setActiveDropdown(item.name)}
                         onMouseLeave={() => setActiveDropdown(null)}
@@ -360,6 +376,18 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                         }}
                       >
                         <div className="py-2">
+                          <a
+                            href={item.href || `#${item.id}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setActiveDropdown(null);
+                              scrollToSection(item.href || `#${item.id}`);
+                            }}
+                            className="block px-4 py-2 text-sm font-semibold text-blue-300 hover:text-blue-400 hover:bg-slate-700 border-b border-slate-700/60 mb-1"
+                          >
+                            {item.name} overview
+                          </a>
                           {item.subItems.map((subItem) => (
                             <a
                               key={subItem.name}
@@ -500,10 +528,9 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                 ) : (
                   <div>
                     <button
+                      aria-expanded={activeDropdown === item.name}
                       onClick={() => {
-                        // Navigate to main section when clicking the main menu item
-                        scrollToSection(item.href || `#${item.id}`);
-                        // Toggle dropdown
+                        // Open or close the sub-menu only
                         setActiveDropdown(activeDropdown === item.name ? null : item.name);
                       }}
                       className={`w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
@@ -523,6 +550,17 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                     {/* Mobile Sub-menu */}
                     {activeDropdown === item.name && (
                       <div className="mt-1 ml-4 space-y-1">
+                        <a
+                          href={item.href || `#${item.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setActiveDropdown(null);
+                            scrollToSection(item.href || `#${item.id}`);
+                          }}
+                          className={`block px-3 py-2 rounded-md text-sm font-semibold ${darkMode ? 'text-blue-300 hover:bg-gray-800/30' : 'text-blue-700 hover:bg-gray-100/30'}`}
+                        >
+                          {item.name} overview
+                        </a>
                         {item.subItems.map((subItem) => (
                           <a
                             key={subItem.name}
