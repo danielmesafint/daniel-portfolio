@@ -154,8 +154,7 @@ const SideNavbar = ({ darkMode, toggleDarkMode, activeSection, onNavigate }) => 
         { name: 'AI Project Code', href: '#resources-ai-code', icon: Code, action: () => window.navigateToResourcesTab('ai-code') },
         { name: 'Student Uploads', href: '#resources-student-uploads', icon: Upload, action: () => window.navigateToResourcesTab('student-uploads') },
         { name: 'Ethics Documents', href: '#resources-ethics', icon: Shield, action: () => window.navigateToResourcesTab('ethics') },
-        { name: 'Blog & Articles', href: '#resources-blog', icon: BookOpen, action: () => window.navigateToResourcesTab('blog') },
-        { name: 'Media Gallery', href: '#resources-gallery', icon: Camera, action: () => window.navigateToResourcesTab('gallery') },
+        { name: 'Blog & Articles', href: '#blog', icon: BookOpen },
         { name: 'Downloads & Tools', href: '#resources-downloads', icon: Download, action: () => window.navigateToResourcesTab('downloads') }
       ]
     },

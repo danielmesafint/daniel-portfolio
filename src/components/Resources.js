@@ -95,8 +95,6 @@ const Resources = () => {
     { id: 'ai-code', name: 'AI Project Code', icon: Code, count: 22 },
     { id: 'student-uploads', name: 'Student Uploads', icon: Upload, count: 34 },
     { id: 'ethics', name: 'Ethics Documents', icon: Shield, count: 7 },
-    { id: 'blog', name: 'Blog & Articles', icon: BookOpen, count: 12 },
-    { id: 'gallery', name: 'Media Gallery', icon: Camera, count: 8 },
     { id: 'downloads', name: 'Downloads & Tools', icon: Download, count: 15 }
   ];
 
@@ -196,18 +194,6 @@ const Resources = () => {
         </div>
 
         {/* Individual Resource Sections for Navigation */}
-        <div id="resources-course-materials" className="mb-8"></div>
-        <div id="resources-assignments" className="mb-8"></div>
-        <div id="resources-lab-materials" className="mb-8"></div>
-        <div id="resources-thesis-templates" className="mb-8"></div>
-        <div id="resources-article-templates" className="mb-8"></div>
-        <div id="resources-datasets" className="mb-8"></div>
-        <div id="resources-ai-code" className="mb-8"></div>
-        <div id="resources-student-uploads" className="mb-8"></div>
-        <div id="resources-ethics" className="mb-8"></div>
-        <div id="resources-blog" className="mb-8"></div>
-        <div id="resources-gallery" className="mb-8"></div>
-        <div id="resources-downloads" className="mb-8"></div>
 
         {/* Search and Filter */}
         <div className="mb-12">
@@ -322,20 +308,6 @@ const Resources = () => {
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-white mb-4">🛡️ Ethics Documents</h3>
             <p className="text-gray-400 mb-6">Research ethics guidelines, compliance documents, and ethical frameworks.</p>
-          </div>
-        </div>
-
-        <div id="resources-blog" className={activeTab !== 'blog' ? 'hidden' : ''} data-tab="blog">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-white mb-4">📚 Blog & Articles</h3>
-            <p className="text-gray-400 mb-6">Academic blog posts, articles, and educational content.</p>
-          </div>
-        </div>
-
-        <div id="resources-gallery" className={activeTab !== 'gallery' ? 'hidden' : ''} data-tab="gallery">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-white mb-4">📷 Media Gallery</h3>
-            <p className="text-gray-400 mb-6">Images, videos, and multimedia resources for educational purposes.</p>
           </div>
         </div>
 

@@ -275,7 +275,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="pb-20 bg-neutral-800/50 relative" style={{ paddingTop: '16px' }}>
+    <section className="pb-20 bg-neutral-800/50 relative" style={{ paddingTop: '16px' }}>
       <div className="absolute inset-0 bg-circuit-pattern opacity-20"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

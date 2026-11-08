@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X, Sun, Moon, ChevronDown, Search, Globe, Settings } from 'lucide-react';
-import ThemeSwitcher from './ThemeSwitcher';
 import { isSectionVisible } from '../config/sections';
 import { useTranslation } from 'react-i18next';
 import navigationHandler from '../utils/NavigationHandler';
@@ -264,8 +263,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
         { name: 'AI Project Code', href: '#resources-ai-code', action: () => window.navigateToResourcesTab('ai-code') },
         { name: 'Student Uploads', href: '#resources-student-uploads', action: () => window.navigateToResourcesTab('student-uploads') },
         { name: 'Ethics Documents', href: '#resources-ethics', action: () => window.navigateToResourcesTab('ethics') },
-        { name: 'Blog & Articles', href: '#resources-blog', action: () => window.navigateToResourcesTab('blog') },
-        { name: 'Media Gallery', href: '#resources-gallery', action: () => window.navigateToResourcesTab('gallery') },
+        { name: 'Blog & Articles', href: '#blog' },
         { name: 'Downloads & Tools', href: '#resources-downloads', action: () => window.navigateToResourcesTab('downloads') }
       ]
     },

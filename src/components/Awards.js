@@ -153,7 +153,7 @@ const Awards = () => {
   ];
 
   return (
-    <section id="awards" className="pb-20 bg-neutral-800/50 relative" style={{ paddingTop: '16px' }}>
+    <section className="pb-20 bg-neutral-800/50 relative" style={{ paddingTop: '16px' }}>
       {/* Circuit Pattern Background */}
       <div className="absolute inset-0 bg-circuit-pattern opacity-20"></div>
       

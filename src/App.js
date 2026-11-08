@@ -15,19 +15,16 @@ import './App.css';
 
 // Complete 15-section website structure - lazy loaded
 const About = lazy(() => import('./components/About'));
-const Experience = lazy(() => import('./components/Experience'));
 const Research = lazy(() => import('./components/Research'));
 const Publications = lazy(() => import('./components/Publications'));
 const Projects = lazy(() => import('./components/Projects'));
 const Teaching = lazy(() => import('./components/Teaching'));
 const Services = lazy(() => import('./components/Services'));
 const Resources = lazy(() => import('./components/Resources'));
-const Portfolio = lazy(() => import('./components/Portfolio'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const Blog = lazy(() => import('./components/Blog'));
 const News = lazy(() => import('./components/News'));
 const Awards = lazy(() => import('./components/Awards'));
-const Gallery = lazy(() => import('./components/Gallery'));
 const Contact = lazy(() => import('./components/Contact'));
 const ChatBot = lazy(() => import('./components/ChatBot'));
 
@@ -142,7 +139,7 @@ function App() {
   // Track active section based on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'experience', 'research', 'publications', 'projects', 'teaching', 'services', 'resources', 'portfolio', 'testimonials', 'blog', 'news', 'awards', 'gallery', 'contact'].filter(isSectionVisible);
+      const sections = ['hero', 'about', 'research', 'publications', 'projects', 'teaching', 'services', 'resources', 'testimonials', 'blog', 'news', 'awards', 'contact'].filter(isSectionVisible);
       
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -255,15 +252,6 @@ function App() {
                     </Suspense>
                   </section>
 
-
-
-                  {/* Section 4: Experience */}
-                  <section id="experience">
-                    <Suspense fallback={<ComponentFallback />}>
-                      <Experience />
-                    </Suspense>
-                  </section>
-
                   {/* Section 5: Research */}
                   <section id="research">
                     <Suspense fallback={<ComponentFallback />}>
@@ -306,13 +294,6 @@ function App() {
                     </Suspense>
                   </section>
 
-                  {/* Section 11: Portfolio */}
-                  <section id="portfolio">
-                    <Suspense fallback={<ComponentFallback />}>
-                      <Portfolio />
-                    </Suspense>
-                  </section>
-
                   {/* Section 11: Testimonials */}
                   {isSectionVisible('testimonials') && (
                     <section id="testimonials">
@@ -344,15 +325,6 @@ function App() {
                       <Awards />
                     </Suspense>
                   </section>
-
-                  {/* Section 15: Gallery */}
-                  {isSectionVisible('gallery') && (
-                    <section id="gallery">
-                      <Suspense fallback={<ComponentFallback />}>
-                        <Gallery />
-                      </Suspense>
-                    </section>
-                  )}
 
                   {/* Section 16: Contact */}
                   <section id="contact">

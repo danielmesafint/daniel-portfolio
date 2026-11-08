@@ -14,7 +14,7 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <div id="about">
+    <div>
       {/* About Me Section Header */}
       <section className="py-16 bg-gray-900 relative">
         {/* Background Pattern */}

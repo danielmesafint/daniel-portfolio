@@ -11,7 +11,7 @@ const Research = () => {
   const { t } = useTranslation();
 
   return (
-    <div id="research">
+    <div>
       {/* Research Section Header */}
       <section className="py-16 bg-gray-900 relative">
         {/* Background Pattern */}

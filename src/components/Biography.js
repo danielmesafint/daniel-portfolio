@@ -167,58 +167,6 @@ const Biography = () => {
           </motion.div>
         </div>
 
-        {/* Highlights Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
-            {t('biography.highlights.title')}
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {highlights.map((highlight, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${highlight.color} flex items-center justify-center`}>
-                  <highlight.icon size={24} className="text-white" />
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  {highlight.title}
-                </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {highlight.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Personal Philosophy */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-8 text-white text-center"
-        >
-          <BookOpen className="w-12 h-12 mx-auto mb-4 opacity-80" />
-          <h3 className="text-2xl font-bold mb-4">{t('biography.philosophy.title')}</h3>
-          <div style={{ fontFamily: 'Playwrite NZ, cursive', fontSize: '12px', lineHeight: '1.6' }}>
-            <p className="text-lg opacity-90 max-w-3xl mx-auto leading-relaxed">
-              "The true measure of AI success is not in the complexity of algorithms, but in their ability to solve real problems and improve human lives while remaining transparent and trustworthy."
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

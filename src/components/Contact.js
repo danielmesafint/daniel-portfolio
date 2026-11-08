@@ -186,7 +186,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="pb-20 bg-neutral-900 relative" style={{ paddingTop: '2px' }}>
+    <section className="pb-20 bg-neutral-900 relative" style={{ paddingTop: '2px' }}>
       {/* Tech Grid Background */}
       <div className="absolute inset-0 bg-tech-grid opacity-20"></div>
       

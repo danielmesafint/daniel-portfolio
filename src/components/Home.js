@@ -3,11 +3,10 @@ import Hero from './Hero';
 import QuickIntro from './QuickIntro';
 import FeaturedResearch from './FeaturedResearch';
 import LatestPublications from './LatestPublications';
-import QuickLinks from './QuickLinks';
 
 const Home = ({ currentTheme, changeTheme }) => {
   return (
-    <div id="home">
+    <div>
       {/* Hero Section */}
       <Hero currentTheme={currentTheme} changeTheme={changeTheme} />
       
@@ -19,9 +18,6 @@ const Home = ({ currentTheme, changeTheme }) => {
       
       {/* Latest Publications Section */}
       <LatestPublications />
-      
-      {/* Quick Links Section */}
-      <QuickLinks />
     </div>
   );
 };

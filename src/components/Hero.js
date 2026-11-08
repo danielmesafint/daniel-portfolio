@@ -177,7 +177,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden" style={{ marginTop: '-64px', paddingTop: '64px', backgroundColor: '#1e293b', position: 'relative', zIndex: 1 }}>
+    <section className="relative min-h-screen overflow-hidden" style={{ marginTop: '-64px', paddingTop: '64px', backgroundColor: '#1e293b', position: 'relative', zIndex: 1 }}>
       {/* Dotted Grid Background */}
       <div className="absolute inset-0" style={{
         backgroundColor: '#1e293b',
