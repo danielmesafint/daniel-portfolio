@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Check } from 'lucide-react';
 
 const THEME_OPTIONS = [
-  { id: 'default', name: 'Default', description: 'Classic dark with pink and blue', swatch: 'linear-gradient(90deg, #ec4899, #3b82f6)' },
+  { id: 'default', name: 'Default', description: 'Calm navy with blue accents', swatch: 'linear-gradient(90deg, #3b82f6, #38bdf8)' },
   { id: 'grido', name: 'GRIDO', description: 'Blue and purple gradient', swatch: 'linear-gradient(90deg, #8b5cf6, #3b82f6)' },
   { id: 'cyber', name: 'Cyber', description: 'Neon cyberpunk', swatch: 'linear-gradient(90deg, #00ff88, #00d4ff)' },
   { id: 'sunset', name: 'Sunset', description: 'Warm sunset colours', swatch: 'linear-gradient(90deg, #f97316, #ef4444)' },

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ:wght@100..400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,7 +11,7 @@
 }
 
 body {
-  font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -166,114 +164,203 @@ textarea:focus {
    common background, accent and gradient classes onto the active
    theme's CSS variables. The default theme is left untouched.
    ------------------------------------------------------------------ */
-html:not(.theme-default) body,
-html:not(.theme-default) .bg-gray-900,
-html:not(.theme-default).dark .dark\:bg-gray-900,
-html:not(.theme-default) .bg-black,
-html:not(.theme-default) .bg-slate-900,
-html:not(.theme-default) .bg-neutral-900 {
+html body,
+html .bg-gray-900,
+html.dark .dark\:bg-gray-900,
+html .bg-black,
+html .bg-slate-900,
+html .bg-neutral-900 {
   background-color: var(--theme-background) !important;
 }
 
-html:not(.theme-default) .bg-gray-800,
-html:not(.theme-default).dark .dark\:bg-gray-800,
-html:not(.theme-default) .bg-slate-800,
-html:not(.theme-default) .bg-neutral-800,
-html:not(.theme-default) .bg-slate-800\/80,
-html:not(.theme-default) .bg-slate-800\/90,
-html:not(.theme-default) .bg-slate-800\/95 {
+html .bg-gray-800,
+html.dark .dark\:bg-gray-800,
+html .bg-slate-800,
+html .bg-neutral-800,
+html .bg-slate-800\/80,
+html .bg-slate-800\/90,
+html .bg-slate-800\/95 {
   background-color: var(--theme-surface) !important;
 }
 
-html:not(.theme-default) .bg-gray-700,
-html:not(.theme-default).dark .dark\:bg-gray-700,
-html:not(.theme-default) .bg-slate-700,
-html:not(.theme-default) .bg-neutral-700 {
+html .bg-gray-700,
+html.dark .dark\:bg-gray-700,
+html .bg-slate-700,
+html .bg-neutral-700 {
   background-color: color-mix(in srgb, var(--theme-surface), white 8%) !important;
 }
 
-html:not(.theme-default) .bg-gray-700\/50,
-html:not(.theme-default) .bg-slate-700\/50 {
+html .bg-gray-700\/50,
+html .bg-slate-700\/50 {
   background-color: color-mix(in srgb, var(--theme-surface) 60%, transparent) !important;
 }
 
 /* Section gradients (e.g. from-gray-900 to-black) */
-html:not(.theme-default) .from-gray-900,
-html:not(.theme-default) .from-slate-900,
-html:not(.theme-default) .from-black {
+html .from-gray-900,
+html .from-slate-900,
+html .from-black {
   --tw-gradient-from: var(--theme-background) var(--tw-gradient-from-position) !important;
 }
-html:not(.theme-default) .to-black,
-html:not(.theme-default) .to-gray-900,
-html:not(.theme-default) .to-gray-800,
-html:not(.theme-default) .to-slate-900 {
+html .to-black,
+html .to-gray-900,
+html .to-gray-800,
+html .to-slate-900 {
   --tw-gradient-to: var(--theme-surface) var(--tw-gradient-to-position) !important;
 }
-html:not(.theme-default) .via-gray-900,
-html:not(.theme-default) .via-gray-800 {
+html .via-gray-900,
+html .via-gray-800 {
   --tw-gradient-stops: var(--tw-gradient-from), var(--theme-surface) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
 }
 
 /* Accent text */
-html:not(.theme-default) .text-pink-400,
-html:not(.theme-default) .text-pink-500,
-html:not(.theme-default) .text-pink-600,
-html:not(.theme-default) .text-purple-400,
-html:not(.theme-default) .text-primary-400,
-html:not(.theme-default) .text-primary-500 {
+html .text-pink-400,
+html .text-pink-500,
+html .text-pink-600,
+html .text-purple-400,
+html .text-primary-400,
+html .text-primary-500 {
   color: var(--theme-primary) !important;
 }
-html:not(.theme-default) .text-blue-400,
-html:not(.theme-default) .text-blue-500,
-html:not(.theme-default) .text-accent-400,
-html:not(.theme-default) .text-cyan-400 {
+html .text-blue-400,
+html .text-blue-500,
+html .text-accent-400,
+html .text-cyan-400 {
   color: var(--theme-accent) !important;
 }
 
 /* Accent backgrounds (buttons, badges) */
-html:not(.theme-default) .bg-pink-500,
-html:not(.theme-default) .bg-pink-600,
-html:not(.theme-default) .bg-purple-600,
-html:not(.theme-default) .bg-primary-500,
-html:not(.theme-default) .bg-primary-600 {
+html .bg-pink-500,
+html .bg-pink-600,
+html .bg-purple-600,
+html .bg-primary-500,
+html .bg-primary-600 {
   background-color: var(--theme-primary) !important;
 }
-html:not(.theme-default) .bg-blue-500,
-html:not(.theme-default) .bg-blue-600,
-html:not(.theme-default) .bg-blue-700,
-html:not(.theme-default) .bg-accent-500 {
+html .bg-blue-500,
+html .bg-blue-600,
+html .bg-blue-700,
+html .bg-accent-500 {
   background-color: var(--theme-accent) !important;
 }
-html:not(.theme-default) .bg-blue-500\/10,
-html:not(.theme-default) .bg-pink-500\/10 {
+html .bg-blue-500\/10,
+html .bg-pink-500\/10 {
   background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent) !important;
 }
 
 /* Accent borders */
-html:not(.theme-default) .border-pink-500,
-html:not(.theme-default) .border-primary-500,
-html:not(.theme-default) .border-primary-400,
-html:not(.theme-default) .border-blue-400,
-html:not(.theme-default) .border-blue-500 {
+html .border-pink-500,
+html .border-primary-500,
+html .border-primary-400,
+html .border-blue-400,
+html .border-blue-500 {
   border-color: var(--theme-primary) !important;
 }
 
 /* Accent gradients (buttons, headings) */
-html:not(.theme-default) .from-pink-500,
-html:not(.theme-default) .from-pink-600,
-html:not(.theme-default) .from-blue-500,
-html:not(.theme-default) .from-blue-600,
-html:not(.theme-default) .from-purple-500,
-html:not(.theme-default) .from-primary-500,
-html:not(.theme-default) .from-primary-600 {
+html .from-pink-500,
+html .from-pink-600,
+html .from-blue-500,
+html .from-blue-600,
+html .from-purple-500,
+html .from-primary-500,
+html .from-primary-600 {
   --tw-gradient-from: var(--theme-primary) var(--tw-gradient-from-position) !important;
 }
-html:not(.theme-default) .to-purple-600,
-html:not(.theme-default) .to-purple-500,
-html:not(.theme-default) .to-pink-500,
-html:not(.theme-default) .to-blue-500,
-html:not(.theme-default) .to-blue-600,
-html:not(.theme-default) .to-grido-purple,
-html:not(.theme-default) .to-accent-500 {
+html .to-purple-600,
+html .to-purple-500,
+html .to-pink-500,
+html .to-blue-500,
+html .to-blue-600,
+html .to-grido-purple,
+html .to-accent-500 {
   --tw-gradient-to: var(--theme-secondary) var(--tw-gradient-to-position) !important;
+}
+
+/* ------------------------------------------------------------------
+   Compact, lightweight layout
+   Scales type, spacing, cards and effects down across the site
+   without editing every component.
+   ------------------------------------------------------------------ */
+html { font-size: 15px; }
+body { color: #cbd5e1; }
+
+/* Section spacing */
+main .py-24, main .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+main .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+main .py-12 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+main .pt-20, main .pt-16 { padding-top: 2rem !important; }
+main .pb-20, main .pb-16 { padding-bottom: 2rem !important; }
+main .mb-20, main .mb-16 { margin-bottom: 1.75rem !important; }
+main .mb-12 { margin-bottom: 1.5rem !important; }
+main .mb-10 { margin-bottom: 1.25rem !important; }
+main .mb-8 { margin-bottom: 1rem !important; }
+main .mt-20, main .mt-16 { margin-top: 1.75rem !important; }
+main .mt-12 { margin-top: 1.5rem !important; }
+main .mt-8 { margin-top: 1rem !important; }
+main .gap-16, main .gap-12 { gap: 1.5rem !important; }
+main .gap-10, main .gap-8 { gap: 1.25rem !important; }
+main .gap-6 { gap: 1rem !important; }
+main .space-y-16 > * + *, main .space-y-12 > * + * { margin-top: 1.5rem !important; }
+main .space-y-8 > * + * { margin-top: 1rem !important; }
+main .space-y-6 > * + * { margin-top: 0.875rem !important; }
+
+/* Card padding */
+main .p-12, main .p-10 { padding: 1.5rem !important; }
+main .p-8 { padding: 1.25rem !important; }
+main .p-6 { padding: 1rem !important; }
+main .px-8 { padding-left: 1.25rem !important; padding-right: 1.25rem !important; }
+main .py-8 { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; }
+main .rounded-3xl, main .rounded-2xl { border-radius: 0.875rem !important; }
+
+/* Typography */
+main h1, main h2, main h3, main h4 { line-height: 1.25 !important; letter-spacing: -0.01em; }
+main .text-7xl, main .text-6xl { font-size: 2.25rem !important; }
+main .text-5xl { font-size: 1.9rem !important; }
+main .text-4xl { font-size: 1.6rem !important; }
+main .text-3xl { font-size: 1.35rem !important; }
+main .text-2xl { font-size: 1.15rem !important; }
+main .text-xl { font-size: 1.025rem !important; }
+main .text-lg { font-size: 0.95rem !important; }
+@media (min-width: 640px) {
+  main .sm\:text-2xl { font-size: 1.15rem !important; }
+  main .sm\:text-3xl { font-size: 1.35rem !important; }
+  main .sm\:text-4xl { font-size: 1.6rem !important; }
+  main .sm\:text-5xl { font-size: 1.9rem !important; }
+}
+@media (min-width: 768px) {
+  main .md\:text-xl { font-size: 1.025rem !important; }
+  main .md\:text-2xl { font-size: 1.15rem !important; }
+  main .md\:text-3xl { font-size: 1.35rem !important; }
+  main .md\:text-4xl { font-size: 1.6rem !important; }
+  main .md\:text-5xl { font-size: 1.9rem !important; }
+  main .md\:text-6xl, main .md\:text-7xl { font-size: 2.25rem !important; }
+}
+@media (min-width: 1024px) {
+  main .lg\:text-2xl { font-size: 1.15rem !important; }
+  main .lg\:text-3xl { font-size: 1.35rem !important; }
+  main .lg\:text-4xl { font-size: 1.6rem !important; }
+  main .lg\:text-5xl { font-size: 1.9rem !important; }
+  main .lg\:text-6xl, main .lg\:text-7xl { font-size: 2.25rem !important; }
+}
+main .font-extrabold, main .font-black { font-weight: 700 !important; }
+main p { line-height: 1.6; }
+@media (max-width: 639px) {
+  main .text-7xl, main .text-6xl, main .text-5xl { font-size: 1.75rem !important; }
+  main .text-4xl { font-size: 1.4rem !important; }
+}
+
+/* Headings use one colour; gradient headings follow the theme */
+main h2:not(.bg-clip-text):not(.text-transparent):not([class*="text-pink"]):not([class*="text-blue"]) { color: #f1f5f9 !important; }
+main h3:not(.bg-clip-text):not(.text-transparent) { color: #e2e8f0; }
+
+/* Lighter effects: soft shadows, no heavy blur or glow */
+main .shadow-2xl, main .shadow-xl, main .shadow-lg { box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15) !important; }
+main .backdrop-blur-sm, main .backdrop-blur-md, main .backdrop-blur-lg { backdrop-filter: none !important; }
+main .animate-pulse { animation: none !important; }
+
+/* Cards get a subtle border so they stand out on the darker background */
+html.dark main .bg-gray-800, html.dark main .dark\:bg-gray-800,
+html.dark main .bg-gray-900.rounded-xl, html.dark main .dark\:bg-gray-900.rounded-xl,
+html.dark main .bg-gray-900.rounded-lg, html.dark main .dark\:bg-gray-900.rounded-lg {
+  border: 1px solid rgba(148, 163, 184, 0.12);
 }

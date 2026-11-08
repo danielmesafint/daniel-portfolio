@@ -47,7 +47,7 @@ const Biography = () => {
           >
             <div className="bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl p-8 text-white">
               <h3 className="text-3xl font-bold mb-4">Biography</h3>
-              <div style={{ fontFamily: 'Playwrite NZ, cursive', fontSize: '12px', lineHeight: '1.6' }}>
+              <div>
                 <p className="text-lg opacity-90 leading-relaxed mb-6">
                   Learn about my journey, passion, and dedication to advancing AI research
                 </p>
@@ -99,7 +99,7 @@ const Biography = () => {
                 <GraduationCap className="w-6 h-6 text-pink-500" />
                 {t('biography.background.title')}
               </h3>
-              <div style={{ fontFamily: 'Playwrite NZ, cursive', fontSize: '12px', lineHeight: '1.6' }}>
+              <div>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                   With <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>over 5 years</span> of experience in <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>artificial intelligence</span> and <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>computer vision</span>, I specialize in developing <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>cutting-edge</span> solutions for real-world challenges. My work <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>focuses</span> on <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>Vision-Language Transformers, Explainable AI</span>, and their applications in <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>healthcare</span> and <span style={{ color: 'var(--theme-primary)', fontWeight: '600' }}>education</span>.
                 </p>
@@ -114,7 +114,7 @@ const Biography = () => {
                 <Heart className="w-6 h-6 text-pink-500" />
                 {t('biography.mission.title')}
               </h3>
-              <div style={{ fontFamily: 'Playwrite NZ, cursive', fontSize: '12px', lineHeight: '1.6' }}>
+              <div>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   My mission is to advance the field of artificial intelligence through innovative research while fostering the next generation of AI researchers. I believe in making AI accessible, explainable, and beneficial for all.
                 </p>
@@ -151,7 +151,7 @@ const Biography = () => {
                 <BookOpen className="w-6 h-6 text-pink-500" />
                 {t('biography.philosophy.title')}
               </h3>
-              <div style={{ fontFamily: 'Playwrite NZ, cursive', fontSize: '12px', lineHeight: '1.6' }}>
+              <div>
                 <blockquote className="text-gray-700 dark:text-gray-300 leading-relaxed italic border-l-4 border-pink-500 pl-4">
                   "The true measure of AI success is not in the complexity of algorithms, but in their ability to solve real problems and improve human lives while remaining transparent and trustworthy."
                 </blockquote>

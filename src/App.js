@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import SideNavbar from './components/SideNavbar';
 import Home from './components/Home';
 import LoadingScreen from './components/LoadingScreen';
 import GlobalThemeSwitcher from './components/GlobalThemeSwitcher';
@@ -49,11 +48,11 @@ function App() {
       name: 'Default',
       description: 'Classic dark/light theme',
       colors: {
-        primary: '#ec4899', // pink-500
-        secondary: '#6b7280', // gray-500
-        accent: '#3b82f6', // blue-500
-        background: darkMode ? '#111827' : '#ffffff',
-        surface: darkMode ? '#1f2937' : '#f9fafb',
+        primary: '#3b82f6', // blue-500
+        secondary: '#6366f1', // indigo-500
+        accent: '#38bdf8', // sky-400
+        background: darkMode ? '#0b1220' : '#ffffff',
+        surface: darkMode ? '#131c2f' : '#f9fafb',
         text: darkMode ? '#ffffff' : '#111827',
         textSecondary: darkMode ? '#d1d5db' : '#6b7280'
       },
@@ -124,7 +123,7 @@ function App() {
 
   // Simple loading
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
+    const timer = setTimeout(() => setIsLoading(false), 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -229,16 +228,8 @@ function App() {
                 onLanguageDropdownChange={setLanguageDropdownOpen}
               />
 
-              {/* Side Navbar */}
-              <SideNavbar 
-                darkMode={darkMode}
-                toggleDarkMode={toggleDarkMode}
-                activeSection={activeSection}
-                onNavigate={setActiveSection}
-              />
-
               {/* Main Content Area */}
-              <div className="lg:ml-64 transition-all duration-300">
+              <div className="transition-all duration-300">
                 <main className="w-full pt-16">
                   {/* Home Section - Contains Hero, Quick Intro, Featured Research, Latest Publications, Quick Links */}
                   <section id="hero">

@@ -1,9 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X, Sun, Moon, ChevronDown, Search, Globe, Settings } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, Globe, Download } from 'lucide-react';
 import { isSectionVisible } from '../config/sections';
+import { iconFor } from '../config/navIcons';
 import { useTranslation } from 'react-i18next';
 import navigationHandler from '../utils/NavigationHandler';
+
+const NavIcon = ({ name, size = 15 }) => {
+  const Icon = iconFor(name);
+  return <Icon size={size} className="flex-shrink-0 opacity-80" aria-hidden="true" />;
+};
 
 const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, onLanguageDropdownChange }) => {
   const { t, i18n } = useTranslation();
@@ -309,7 +315,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
   };
 
   return (
-    <nav ref={navRef} className={`fixed top-0 lg:left-64 left-0 right-0 z-[9999] transition-all duration-300 ${
+    <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
       scrolled 
         ? 'bg-slate-800/95 backdrop-blur-md shadow-lg border-b border-slate-700/50' 
         : 'bg-slate-800/90 backdrop-blur-sm border-b border-slate-700/30'
@@ -317,9 +323,18 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
       <div className="w-full px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Left side - Navigation */}
-          <div className="flex items-center flex-1 max-w-4xl mr-4">
+          <div className="flex items-center flex-1 min-w-0 mr-2">
+            {/* Brand */}
+            <a
+              href="#hero"
+              onClick={(e) => { e.preventDefault(); scrollToSection('#hero'); }}
+              className="flex items-center gap-2 mr-4 flex-shrink-0"
+            >
+              <img src="/logo192.png" alt="" className="w-7 h-7 rounded-md" />
+              <span className="text-sm font-semibold text-white whitespace-nowrap">Dr. Daniel Mesafint</span>
+            </a>
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1 flex-wrap">
+            <div className="hidden xl:flex items-center gap-0.5">
               {navItems.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.type === 'direct' ? (
@@ -329,13 +344,13 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                         e.preventDefault();
                         scrollToSection(item.href);
                       }}
-                      className={`px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
+                      className={`inline-flex items-center gap-1.5 px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                         activeSection === item.id
                           ? 'text-blue-400 bg-blue-500/10 rounded-md'
                           : 'text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-md'
                       }`}
                     >
-                      {item.name}
+                      <NavIcon name={item.name} />{item.name}
                     </a>
                   ) : (
                     <>
@@ -355,7 +370,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                         onMouseEnter={() => setActiveDropdown(item.name)}
                         onMouseLeave={() => setActiveDropdown(null)}
                       >
-                        {item.name}
+                        <NavIcon name={item.name} /><span className="ml-1.5">{item.name}</span>
                         <ChevronDown className="ml-1 w-3 h-3" />
                       </button>
                       
@@ -397,9 +412,9 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                                 // Use NavigationHandler for all dropdown navigation
                                 navigationHandler.handleDropdownClick(subItem, setActiveDropdown, scrollToSection);
                               }}
-                              className="block px-4 py-2 text-sm text-gray-300 hover:text-blue-400 hover:bg-slate-700 transition-colors duration-200"
+                              className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:text-blue-400 hover:bg-slate-700 transition-colors duration-200"
                             >
-                              {subItem.name}
+                              <NavIcon name={subItem.name} size={14} />{subItem.name}
                             </a>
                           ))}
                         </div>
@@ -411,8 +426,16 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
             </div>
           </div>
 
-          {/* Right side - Search & Language */}
+          {/* Right side - CV, Search & Language */}
           <div className="flex items-center space-x-2 flex-shrink-0">
+            <a
+              href="/Dr_Daniel_Mesafint_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-md bg-blue-600 hover:bg-blue-500 text-white"
+            >
+              <Download size={14} aria-hidden="true" /> CV
+            </a>
             {/* Search */}
             {searchOpen ? (
               <form onSubmit={handleSearch} className="flex items-center">
@@ -486,9 +509,10 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="xl:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 className="p-2 text-gray-300 hover:text-blue-400 hover:bg-slate-700/50 rounded-md transition-colors duration-200"
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -500,7 +524,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className={`md:hidden ${
+        <div className={`xl:hidden ${
           darkMode 
             ? 'bg-gray-900/95 border-gray-700' 
             : 'bg-white/95 border-gray-200'
@@ -515,13 +539,13 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                       e.preventDefault();
                       scrollToSection(item.href);
                     }}
-                    className={`block px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                    className={`flex items-center gap-2 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
                       darkMode 
                         ? 'text-gray-300 hover:text-pink-400 hover:bg-gray-800/50' 
                         : 'text-gray-700 hover:text-pink-600 hover:bg-gray-100/50'
                     }`}
                   >
-                    {item.name}
+                    <NavIcon name={item.name} />{item.name}
                   </a>
                 ) : (
                   <div>
@@ -537,7 +561,7 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                           : 'text-gray-700 hover:text-pink-600 hover:bg-gray-100/50'
                       }`}
                     >
-                      {item.name}
+                      <span className="flex items-center gap-2"><NavIcon name={item.name} />{item.name}</span>
                       <ChevronDown 
                         className={`w-4 h-4 transition-transform duration-200 ${
                           activeDropdown === item.name ? 'rotate-180' : ''
@@ -570,13 +594,13 @@ const Navbar = ({ darkMode, toggleDarkMode, currentTheme, changeTheme, themes, o
                               // Use NavigationHandler for mobile dropdown navigation
                               navigationHandler.handleDropdownClick(subItem, setActiveDropdown, scrollToSection);
                             }}
-                            className={`block px-3 py-2 rounded-md text-sm transition-colors duration-200 ${
+                            className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors duration-200 ${
                               darkMode 
                                 ? 'text-gray-400 hover:text-pink-400 hover:bg-gray-800/30' 
                                 : 'text-gray-600 hover:text-pink-600 hover:bg-gray-100/30'
                             }`}
                           >
-                            {subItem.name}
+                            <NavIcon name={subItem.name} size={14} />{subItem.name}
                           </a>
                         ))}
                       </div>
