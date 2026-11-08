@@ -7,7 +7,8 @@ const AnthropicModule = require('@anthropic-ai/sdk');
 const KNOWLEDGE = require('./_knowledge');
 
 const Anthropic = AnthropicModule.default || AnthropicModule;
-const MODEL = process.env.CHAT_MODEL || 'claude-opus-5-5';
+// Haiku 5.5 is fast and inexpensive; set CHAT_MODEL in Vercel to override.
+const MODEL = process.env.CHAT_MODEL || 'claude-haiku-5-5';
 const MAX_TURNS = 12;
 const MAX_CHARS = 1500;
 
@@ -62,11 +63,7 @@ module.exports = async (req, res) => {
 
   const client = new Anthropic();
   try {
-    // Server-side fallback: if the model declines, the API retries on a
-    // suitable fallback model inside the same call.
-    const response = await client.beta.messages.create({
-      betas: ['server-side-fallback-2026-07-01'],
-      fallbacks: 'default',
+    const response = await client.messages.create({
       model: MODEL,
       max_tokens: 1024,
       output_config: { effort: 'low' },
