@@ -926,7 +926,7 @@ const ChatBot = () => {
           content: getTranslationInLanguage('chatbot.responses.contact', detectedLanguage),
           actions: [
             { text: getTranslationInLanguage('chatbot.actions.sendEmail', detectedLanguage), action: () => scrollToSection('#contact') },
-            { text: getTranslationInLanguage('chatbot.actions.scheduleMeeting', detectedLanguage), action: () => window.open('https://calendly.com/dr-daniel-mesafint/consultation', '_blank') },
+            { text: getTranslationInLanguage('chatbot.actions.scheduleMeeting', detectedLanguage), action: () => window.open('mailto:danielmesafint1985@gmail.com?subject=Consultation%20request', '_blank') },
             { text: getTranslationInLanguage('chatbot.actions.linkedinProfile', detectedLanguage), action: () => window.open('https://www.linkedin.com/in/daniel-mesafint', '_blank') }
           ]
         };

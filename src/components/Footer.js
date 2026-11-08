@@ -39,14 +39,15 @@ const Footer = () => {
   ];
 
   const academicLinks = [
-    { name: 'Google Scholar', href: 'https://scholar.google.com/citations?user=daniel-mesafint' },
+    { name: 'Google Scholar', href: 'https://scholar.google.com/citations?user=hxLjZCAAAAAJ&hl=en' },
+    { name: 'ORCID', href: 'https://orcid.org/0000-0002-8424-5069' },
     { name: 'ResearchGate', href: 'https://www.researchgate.net/profile/Daniel-Mesafint' },
     { name: 'Academia.edu', href: 'https://university.academia.edu/danielmesafint' }
   ];
 
   const socialLinks = [
     { name: 'LinkedIn', href: 'https://www.linkedin.com/in/daniel-mesafint' },
-    { name: 'GitHub', href: 'https://github.com/daniel-mesafint' },
+    { name: 'GitHub', href: 'https://github.com/danielmesafint' },
     { name: 'Twitter', href: 'https://twitter.com/danielmesafint' },
     { name: 'Facebook', href: 'https://www.facebook.com/dmesafint' }
   ];

@@ -20,93 +20,93 @@ const Gallery = () => {
   const galleryItems = [
     {
       id: 1,
-      src: '/api/placeholder/400/300',
-      title: 'Keynote at International AI Conference 2024',
-      category: 'conferences',
-      date: '2024-10-15',
-      location: 'San Francisco, CA',
-      description: 'Delivering keynote presentation on Vision-Language Transformers at the International AI Conference.',
-      attendees: '500+ researchers'
+      src: '/profile_photo.jpg',
+      title: 'Portrait',
+      category: 'research',
+      date: '',
+      location: 'Debre Tabor, Ethiopia',
+      description: 'Professional portrait.',
+      attendees: ''
     },
     {
       id: 2,
-      src: '/api/placeholder/400/300',
-      title: 'Research Lab Team Meeting',
+      src: '/all_project_images/vision_language_transformer.jpg',
+      title: 'Vision-Language Transformer Research',
       category: 'research',
-      date: '2024-09-20',
+      date: '',
       location: 'Debre Tabor University',
-      description: 'Weekly research team meeting discussing progress on healthcare AI projects.',
-      attendees: '12 team members'
+      description: 'Visual summary of ongoing vision-language transformer research.',
+      attendees: ''
     },
     {
       id: 3,
-      src: '/api/placeholder/400/300',
-      title: 'Best Paper Award Ceremony',
-      category: 'awards',
-      date: '2024-08-10',
-      location: 'Oxford, UK',
-      description: 'Receiving the Best Paper Award at the International Conference on Computer Vision.',
-      attendees: '300+ attendees'
+      src: '/all_research_images/agri_resilience.jpg',
+      title: 'AI for Agricultural Resilience',
+      category: 'research',
+      date: '',
+      location: 'Ethiopia',
+      description: 'Applying machine learning to agriculture and food security.',
+      attendees: ''
     },
     {
       id: 4,
-      src: '/api/placeholder/400/300',
-      title: 'Graduate Student Supervision',
-      category: 'teaching',
-      date: '2024-07-25',
-      location: 'University Campus',
-      description: 'One-on-one supervision session with PhD student working on explainable AI.',
-      attendees: 'Individual session'
+      src: '/all_research_images/climate_smart_irrigation.jpg',
+      title: 'Climate-Smart Irrigation',
+      category: 'research',
+      date: '',
+      location: 'Ethiopia',
+      description: 'Data-driven approaches to irrigation planning.',
+      attendees: ''
     },
     {
       id: 5,
-      src: '/api/placeholder/400/300',
-      title: 'Collaboration with Stanford AI Lab',
-      category: 'collaborations',
-      date: '2024-06-30',
-      location: 'Stanford University',
-      description: 'Research collaboration meeting with Stanford AI Lab team on multimodal learning.',
-      attendees: '8 researchers'
+      src: '/all_research_images/research_methodology_in-datascience.jpg',
+      title: 'Research Methodology in Data Science',
+      category: 'teaching',
+      date: '',
+      location: 'Debre Tabor University',
+      description: 'Teaching material on research methods for data science students.',
+      attendees: ''
     },
     {
       id: 6,
-      src: '/api/placeholder/400/300',
-      title: 'Deep Learning Workshop',
+      src: '/all_research_images/building_scalable_ml_pipelines.jpg',
+      title: 'Building Scalable ML Pipelines',
       category: 'teaching',
-      date: '2024-06-15',
-      location: 'Conference Center',
-      description: 'Conducting hands-on deep learning workshop for industry professionals.',
-      attendees: '50+ participants'
+      date: '',
+      location: 'Debre Tabor University',
+      description: 'Course and workshop content on production ML pipelines.',
+      attendees: ''
     },
     {
       id: 7,
-      src: '/api/placeholder/400/300',
-      title: 'Research Presentation at MIT',
-      category: 'research',
-      date: '2024-05-20',
-      location: 'MIT, Cambridge',
-      description: 'Presenting latest research findings on adversarial robustness in neural networks.',
-      attendees: '75+ researchers'
+      src: '/all_research_images/the_future_ai_healthcare.jpg',
+      title: 'The Future of AI in Healthcare',
+      category: 'conferences',
+      date: '',
+      location: 'Talk',
+      description: 'Talk on the role of explainable AI in healthcare.',
+      attendees: ''
     },
     {
       id: 8,
-      src: '/api/placeholder/400/300',
-      title: 'Excellence in Teaching Award',
-      category: 'awards',
-      date: '2024-04-10',
-      location: 'University Auditorium',
-      description: 'Receiving the Excellence in Teaching Award for outstanding contribution to education.',
-      attendees: '200+ faculty'
+      src: '/all_project_images/ethiopian_nlp.jpg',
+      title: 'NLP for Ethiopian Languages',
+      category: 'collaborations',
+      date: '',
+      location: 'Collaborative project',
+      description: 'Natural language processing for Amharic and other Ethiopian languages.',
+      attendees: ''
     },
     {
       id: 9,
-      src: '/api/placeholder/400/300',
-      title: 'International Research Collaboration',
-      category: 'collaborations',
-      date: '2024-03-15',
-      location: 'Virtual Meeting',
-      description: 'Virtual collaboration meeting with international research partners from 5 countries.',
-      attendees: '15+ researchers'
+      src: '/daniel-profile-latest.png',
+      title: 'Profile',
+      category: 'awards',
+      date: '',
+      location: 'Debre Tabor, Ethiopia',
+      description: 'Profile photo.',
+      attendees: ''
     }
   ];
 
@@ -204,10 +204,17 @@ const Gallery = () => {
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2">
                     {item.title}
                   </h3>
+                  {item.date ? (
                   <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                     <Calendar className="w-4 h-4 mr-1" />
                     <span>{new Date(item.date).toLocaleDateString()}</span>
                   </div>
+                  ) : (
+                  <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span>{item.location}</span>
+                  </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -262,24 +269,24 @@ const Gallery = () => {
                     </p>
 
                     <div className="space-y-3">
-                      <div className="flex items-center text-gray-700 dark:text-gray-300">
+                      {selectedImage.date && (<div className="flex items-center text-gray-700 dark:text-gray-300">
                         <Calendar className="w-5 h-5 mr-3 text-pink-500" />
                         <span>{new Date(selectedImage.date).toLocaleDateString('en-US', { 
                           year: 'numeric', 
                           month: 'long', 
                           day: 'numeric' 
                         })}</span>
-                      </div>
+                      </div>)}
 
                       <div className="flex items-center text-gray-700 dark:text-gray-300">
                         <MapPin className="w-5 h-5 mr-3 text-pink-500" />
                         <span>{selectedImage.location}</span>
                       </div>
 
-                      <div className="flex items-center text-gray-700 dark:text-gray-300">
+                      {selectedImage.attendees && (<div className="flex items-center text-gray-700 dark:text-gray-300">
                         <Users className="w-5 h-5 mr-3 text-pink-500" />
                         <span>{selectedImage.attendees}</span>
-                      </div>
+                      </div>)}
 
                       <div className="flex items-center text-gray-700 dark:text-gray-300">
                         <Award className="w-5 h-5 mr-3 text-pink-500" />

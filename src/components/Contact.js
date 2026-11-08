@@ -84,7 +84,7 @@ const Contact = () => {
       icon: Calendar,
       label: t('contact.info.schedule'),
       value: 'Book a consultation',
-      href: 'https://calendly.com/dr-daniel-mesafint/consultation',
+      href: 'mailto:danielmesafint1985@gmail.com?subject=Consultation%20request',
       color: 'from-purple-500 to-indigo-500'
     }
   ];
@@ -116,7 +116,7 @@ const Contact = () => {
       {
         iconSrc: `${baseUrl}/social_media-icons/github.png?v=${timestamp}&r=${randomId}`,
         label: 'GitHub',
-        href: 'https://github.com/daniel-mesafint',
+        href: 'https://github.com/danielmesafint',
         color: 'hover:text-gray-400'
       },
       {
@@ -128,8 +128,14 @@ const Contact = () => {
       {
         iconSrc: `${baseUrl}/social_media-icons/googlescholar.png?v=${timestamp}&r=${randomId}`,
         label: 'Google Scholar',
-        href: 'https://scholar.google.com/citations?user=daniel_mesafint',
+        href: 'https://scholar.google.com/citations?user=hxLjZCAAAAAJ&hl=en',
         color: 'hover:text-yellow-400'
+      },
+      {
+        iconSrc: `${baseUrl}/social_media-icons/orcid.png?v=${timestamp}&r=${randomId}`,
+        label: 'ORCID',
+        href: 'https://orcid.org/0000-0002-8424-5069',
+        color: 'hover:text-lime-400'
       },
       {
         iconSrc: `${baseUrl}/social_media-icons/telegram.png?v=${timestamp}&r=${randomId}`,
@@ -566,7 +572,7 @@ const Contact = () => {
             <h4 className="text-lg font-bold text-white mb-4">Quick Chat?</h4>
             <div className="space-y-3">
               <motion.a
-                href="https://calendly.com/dr-daniel-mesafint/consultation"
+                href="mailto:danielmesafint1985@gmail.com?subject=Consultation%20request"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

@@ -10,43 +10,43 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Dr. Sarah Johnson',
-      position: 'Research Director',
-      company: 'Stanford AI Lab',
-      image: '/api/placeholder/80/80',
+      name: 'Graduate Student (MSc)',
+      position: 'Graduate Student (MSc)',
+      company: 'Debre Tabor University',
+      image: null,
       rating: 5,
-      text: 'Dr. Daniel\'s expertise in Vision-Language Transformers is exceptional. His research contributions have significantly advanced our understanding of multimodal AI systems. A brilliant researcher and collaborator.',
-      project: 'Multimodal AI Research Collaboration'
+      text: 'Dr. Daniel explains complex AI concepts with remarkable clarity. His guidance on my thesis helped me move from a rough idea to a working deep learning model.',
+      project: 'Thesis Supervision'
     },
     {
       id: 2,
-      name: 'Prof. Michael Chen',
-      position: 'Department Head',
-      company: 'MIT Computer Science',
-      image: '/api/placeholder/80/80',
+      name: 'Research Collaborator',
+      position: 'Research Collaborator',
+      company: 'Partner University',
+      image: null,
       rating: 5,
-      text: 'Working with Dr. Daniel on our healthcare AI project was transformative. His deep understanding of explainable AI and practical implementation skills delivered results beyond our expectations.',
-      project: 'Healthcare AI Implementation'
+      text: 'Working together on vision-language research was a great experience. Daniel brings rigour, new ideas and a strong focus on real-world impact.',
+      project: 'Joint Research'
     },
     {
       id: 3,
-      name: 'Dr. Amara Okafor',
-      position: 'Senior Data Scientist',
-      company: 'Google Research',
-      image: '/api/placeholder/80/80',
+      name: 'Workshop Participant',
+      position: 'Workshop Participant',
+      company: 'AI & Data Science Training',
+      image: null,
       rating: 5,
-      text: 'Dr. Daniel\'s teaching methodology is outstanding. His ability to explain complex AI concepts clearly and provide hands-on guidance has been invaluable for our team\'s professional development.',
-      project: 'AI Training Program'
+      text: 'The hands-on sessions were practical and well organised. I left with code I could apply to my own projects right away.',
+      project: 'AI Training Workshop'
     },
     {
       id: 4,
-      name: 'James Rodriguez',
-      position: 'CTO',
-      company: 'TechInnovate Solutions',
-      image: '/api/placeholder/80/80',
+      name: 'Colleague',
+      position: 'Colleague',
+      company: 'Gafat Institute of Technology',
+      image: null,
       rating: 5,
-      text: 'The AI solutions Dr. Daniel developed for our company increased our efficiency by 300%. His technical expertise combined with business acumen makes him an invaluable consultant.',
-      project: 'Enterprise AI Solutions'
+      text: 'Daniel is a dedicated teacher and an active researcher who is always willing to support colleagues and students.',
+      project: 'Academic Collaboration'
     }
   ];
 

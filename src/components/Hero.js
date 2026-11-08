@@ -126,7 +126,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
       },
       {
         iconSrc: `${baseUrl}/github.png`,
-        href: 'https://github.com/daniel-mesafint',
+        href: 'https://github.com/danielmesafint',
         label: 'GitHub Profile - Opens in new tab',
         ariaLabel: 'Visit Dr. Daniel Mesafint\'s GitHub profile',
         iconType: 'github'
@@ -140,7 +140,7 @@ const Hero = ({ currentTheme, changeTheme }) => {
       },
       {
         iconSrc: `${baseUrl}/googlescholar.png`,
-        href: 'https://scholar.google.com/citations?user=daniel-mesafint',
+        href: 'https://scholar.google.com/citations?user=hxLjZCAAAAAJ&hl=en',
         label: 'Google Scholar Profile - Opens in new tab',
         ariaLabel: 'Visit Dr. Daniel Mesafint\'s Google Scholar profile',
         iconType: 'scholar'

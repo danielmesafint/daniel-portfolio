@@ -89,8 +89,8 @@ const Projects = () => {
       technologies: ['PyTorch', 'Transformers', 'OpenCV', 'CLIP'],
       category: 'Research',
       status: 'Active',
-      github: 'https://github.com/daniel-mesafint/vl-robustness',
-      demo: 'https://vl-robustness-demo.com',
+      github: '',
+      demo: '',
       impact: 'Used by 50+ researchers worldwide',
       year: 2024
     },
@@ -102,8 +102,8 @@ const Projects = () => {
       technologies: ['OpenCV', 'TensorFlow', 'CNN', 'Spotify API'],
       category: 'Application',
       status: 'Completed',
-      github: 'https://github.com/daniel-mesafint/emotion-music',
-      demo: 'https://emotion-music-app.com',
+      github: '',
+      demo: '',
       impact: '10K+ active users',
       year: 2023
     }
@@ -119,8 +119,8 @@ const Projects = () => {
       technologies: ['Python', 'Transformers', 'spaCy', 'NLTK'],
       category: 'Research',
       status: 'Active',
-      github: 'https://github.com/daniel-mesafint/ethiopian-nlp',
-      demo: 'https://ethiopian-nlp-demo.com',
+      github: '',
+      demo: '',
       impact: 'Used by Ethiopian NLP community',
       year: 2022
     }
@@ -135,8 +135,8 @@ const Projects = () => {
       technologies: ['D3.js', 'React', 'Python', 'FastAPI'],
       category: 'Tool',
       status: 'Active',
-      github: 'https://github.com/daniel-mesafint/dataviz-pro',
-      demo: 'https://dataviz-pro.com',
+      github: '',
+      demo: '',
       downloads: '5K+ downloads',
       year: 2024
     },
@@ -148,8 +148,8 @@ const Projects = () => {
       technologies: ['React', 'Node.js', 'Docker', 'Kubernetes'],
       category: 'Tool',
       status: 'Active',
-      github: 'https://github.com/daniel-mesafint/ml-pipeline-builder',
-      demo: 'https://ml-pipeline-builder.com',
+      github: '',
+      demo: '',
       downloads: '3K+ downloads',
       year: 2023
     }
@@ -164,8 +164,8 @@ const Projects = () => {
       technologies: ['YOLO', 'OpenCV', 'JavaScript', 'WebRTC'],
       category: 'Demo',
       status: 'Live',
-      demo: 'https://object-detection-demo.com',
-      github: 'https://github.com/daniel-mesafint/object-detection-demo',
+      demo: '',
+      github: '',
       views: '50K+ views',
       year: 2024
     },
@@ -177,8 +177,8 @@ const Projects = () => {
       technologies: ['TensorFlow.js', 'React', 'Canvas API'],
       category: 'Demo',
       status: 'Live',
-      demo: 'https://style-transfer-demo.com',
-      github: 'https://github.com/daniel-mesafint/style-transfer-demo',
+      demo: '',
+      github: '',
       views: '30K+ views',
       year: 2023
     }
@@ -343,7 +343,7 @@ const Projects = () => {
                   )}
                   
                   <div className="flex gap-3">
-                    <motion.a
+                    {project.github && (<motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -353,9 +353,9 @@ const Projects = () => {
                     >
                       <Github size={16} />
                       <span className="text-sm">Code</span>
-                    </motion.a>
+                    </motion.a>)}
                     
-                    <motion.a
+                    {project.demo && (<motion.a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -365,7 +365,7 @@ const Projects = () => {
                     >
                       <ExternalLink size={16} />
                       <span className="text-sm">Demo</span>
-                    </motion.a>
+                    </motion.a>)}
                   </div>
                 </div>
               </motion.div>
@@ -455,7 +455,7 @@ const Projects = () => {
                   )}
                   
                   <div className="flex gap-3">
-                    <motion.a
+                    {project.github && (<motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -465,9 +465,9 @@ const Projects = () => {
                     >
                       <Github size={16} />
                       <span className="text-sm">Code</span>
-                    </motion.a>
+                    </motion.a>)}
                     
-                    <motion.a
+                    {project.demo && (<motion.a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -477,7 +477,7 @@ const Projects = () => {
                     >
                       <ExternalLink size={16} />
                       <span className="text-sm">Demo</span>
-                    </motion.a>
+                    </motion.a>)}
                   </div>
                 </div>
               </motion.div>
@@ -567,7 +567,7 @@ const Projects = () => {
                   )}
                   
                   <div className="flex gap-3">
-                    <motion.a
+                    {project.github && (<motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -577,9 +577,9 @@ const Projects = () => {
                     >
                       <Github size={16} />
                       <span className="text-sm">Code</span>
-                    </motion.a>
+                    </motion.a>)}
                     
-                    <motion.a
+                    {project.demo && (<motion.a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -589,7 +589,7 @@ const Projects = () => {
                     >
                       <ExternalLink size={16} />
                       <span className="text-sm">Demo</span>
-                    </motion.a>
+                    </motion.a>)}
                   </div>
                 </div>
               </motion.div>
@@ -679,7 +679,7 @@ const Projects = () => {
                   )}
                   
                   <div className="flex gap-3">
-                    <motion.a
+                    {project.github && (<motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -689,9 +689,9 @@ const Projects = () => {
                     >
                       <Github size={16} />
                       <span className="text-sm">Code</span>
-                    </motion.a>
+                    </motion.a>)}
                     
-                    <motion.a
+                    {project.demo && (<motion.a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -701,7 +701,7 @@ const Projects = () => {
                     >
                       <ExternalLink size={16} />
                       <span className="text-sm">Demo</span>
-                    </motion.a>
+                    </motion.a>)}
                   </div>
                 </div>
               </motion.div>
@@ -724,7 +724,7 @@ const Projects = () => {
               Visit my GitHub profile to explore additional projects, contributions, and open-source work.
             </p>
             <motion.a
-              href="https://github.com/daniel-mesafint"
+              href="https://github.com/danielmesafint"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
