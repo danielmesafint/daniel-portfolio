@@ -90,6 +90,14 @@ const ChatBot = () => {
     }
   }, []);
 
+  // Close the assistant with the Escape key
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const onKey = (e) => { if (e.key === 'Escape') setIsOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isOpen]);
+
   // Update welcome message when language changes or conversation language changes
   useEffect(() => {
     setMessages(prev => {
@@ -97,7 +105,10 @@ const ChatBot = () => {
       if (updatedMessages.length > 0 && updatedMessages[0].type === 'bot') {
         // Use conversation language for welcome message if available
         const welcomeLanguage = conversationLanguage || i18n.language;
-        const welcomeMessage = getTranslationInLanguage('chatbot.welcome', welcomeLanguage) || t('chatbot.welcome');
+        const fromMap = getTranslationInLanguage('chatbot.welcome', welcomeLanguage);
+        const welcomeMessage = fromMap && fromMap !== 'chatbot.welcome'
+          ? fromMap
+          : i18n.t('chatbot.welcome', { lng: welcomeLanguage });
         
         updatedMessages[0] = {
           ...updatedMessages[0],
@@ -1133,7 +1144,14 @@ const ChatBot = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 w-96 h-[500px] grido-card rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            role="dialog"
+            aria-label="AI Assistant"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[60] grido-card rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-primary-500/30"
+            style={{
+              width: 'min(24rem, calc(100vw - 2rem))',
+              height: 'min(34rem, calc(100vh - 7rem))',
+              backgroundColor: 'rgba(15, 23, 42, 0.98)'
+            }}
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary-600/20 to-grido-purple/20 border-b border-primary-500/30 p-4 flex items-center justify-between">
@@ -1155,7 +1173,9 @@ const ChatBot = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-white/20 rounded-lg transition-colors"
+                aria-label="Close AI Assistant"
+                title="Close"
+                className="p-2 hover:bg-white/20 rounded-lg transition-colors flex-shrink-0"
               >
                 <X size={20} className="text-white" />
               </motion.button>
