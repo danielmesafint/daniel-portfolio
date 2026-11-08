@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import {
   MapPin, Download, Mail, Brain, Languages, Bot, HeartPulse, ShieldCheck, Database,
-  CheckCircle2, Phone, MessageCircle, Send, ChevronDown, ChevronUp, BookOpen, Users, Mic
+  CheckCircle2, Phone, MessageCircle, Send, ChevronDown, ChevronUp, BookOpen, Users, Mic,
+  Copy, Check, Sparkles, TrendingUp, ExternalLink, ArrowRight
 } from 'lucide-react';
 import {
   profile, links, stats, about, education, interests, projects, conferences,
-  courses, supervision, experience, reviewer, committees, certifications
+  courses, supervision, experience, reviewer, committees, certifications, publications
 } from '../data/profile';
+import { NAV } from './Header';
 import { LinkIcon } from './icons';
+import { CountUp } from './Enhancements';
 
 export const SectionHead = ({ eyebrow, title, children }) => (
   <div className="section-head">
@@ -30,11 +33,12 @@ export const ProfileLinks = () => (
 
 /* ---------------- Hero ---------------- */
 export const Hero = () => (
-  <section className="hero" id="top">
+  <section className="hero hero-bg" id="top">
     <div className="container">
       <div className="hero-grid">
         <div>
-          <span className="eyebrow">Computer Science &middot; AI &middot; Machine Learning</span>
+          <span className="status-badge"><span className="dot" aria-hidden="true" />Open to research collaboration &amp; MSc/PhD supervision</span>
+          <span className="eyebrow" style={{ display: 'flex', marginTop: 14 }}>Computer Science &middot; AI &middot; Machine Learning</span>
           <h1>{profile.name}</h1>
           <div className="hero-role">{profile.title}</div>
           <div className="hero-affil"><MapPin size={15} aria-hidden="true" />{profile.affiliation}</div>
@@ -50,13 +54,17 @@ export const Hero = () => (
           <ProfileLinks />
         </div>
         <div className="portrait-wrap">
-          <img className="portrait" src={profile.portrait} alt={`Portrait of ${profile.shortName}`} width="800" height="1000" />
+          <img className="portrait" src={profile.portrait} alt={`Portrait of ${profile.shortName}`} width="800" height="1000" fetchpriority="high" />
+          <div className="portrait-card">
+            <span className="icon-tile"><TrendingUp size={16} aria-hidden="true" /></span>
+            <div><strong>746+ citations</strong><small>Google Scholar</small></div>
+          </div>
         </div>
       </div>
       <div className="stats">
         {stats.map((s) => (
           <div key={s.label} className="card stat">
-            <div className="stat-value">{s.value}</div>
+            <div className="stat-value"><CountUp value={s.value} /></div>
             <div className="stat-label">{s.label}</div>
           </div>
         ))}
@@ -99,6 +107,30 @@ export const About = () => (
 );
 
 /* ---------------- Research ---------------- */
+const FeaturedWork = () => {
+  const top = [...publications].sort((a, b) => b.citations - a.citations)[0];
+  return (
+    <div className="card featured">
+      <div className="featured-text">
+        <span className="badge badge-accent"><Sparkles size={13} aria-hidden="true" /> Featured work</span>
+        <h3>{top.title}</h3>
+        <p>
+          From my PhD research: machine learning models that predict HIV/AIDS test results from Ethiopian Demographic and
+          Health Survey data, with grid search used to tune each model. It is my most cited paper.
+        </p>
+        <a className="btn btn-outline btn-sm" href={top.url} target="_blank" rel="noopener noreferrer">
+          Read the paper <ExternalLink size={14} aria-hidden="true" />
+        </a>
+      </div>
+      <div className="featured-stat">
+        <div className="featured-number"><CountUp value={`${top.citations}`} /></div>
+        <div>citations</div>
+        <small>{top.venue}, {top.year}</small>
+      </div>
+    </div>
+  );
+};
+
 const INTEREST_ICONS = { brain: Brain, languages: Languages, bot: Bot, heart: HeartPulse, shield: ShieldCheck, database: Database };
 
 export const Research = () => (
@@ -107,6 +139,7 @@ export const Research = () => (
       <SectionHead eyebrow="Research" title="Research areas">
         Applied machine learning for health and for Ethiopian languages, from predictive models to conversational agents.
       </SectionHead>
+      <FeaturedWork />
       <div className="grid-3">
         {interests.map((i) => {
           const Icon = INTEREST_ICONS[i.icon];
@@ -145,7 +178,7 @@ export const Projects = () => (
       <div className="grid-4">
         {projects.map((p) => (
           <article key={p.title} className="card project">
-            <img src={p.image} alt="" loading="lazy" width="800" height="450" />
+            <div className="project-media"><img src={p.image} alt="" loading="lazy" width="800" height="450" /></div>
             <div className="project-body">
               <h3>{p.title}</h3>
               <p>{p.text}</p>
@@ -239,6 +272,20 @@ export const Service = () => (
 );
 
 /* ---------------- Contact ---------------- */
+const CopyButton = ({ text }) => {
+  const [done, setDone] = useState(false);
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(text); } catch (e) { return; }
+    setDone(true);
+    setTimeout(() => setDone(false), 1600);
+  };
+  return (
+    <button className="btn btn-ghost btn-sm" onClick={copy} aria-label="Copy email address" title="Copy email address">
+      {done ? <Check size={15} /> : <Copy size={15} />}
+    </button>
+  );
+};
+
 export const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -258,7 +305,8 @@ export const Contact = () => {
           <div className="card">
             <div className="contact-item">
               <span className="icon-tile"><Mail size={17} aria-hidden="true" /></span>
-              <div><small>Email</small><a href={`mailto:${profile.email}`}>{profile.email}</a></div>
+              <div style={{ flex: 1, minWidth: 0 }}><small>Email</small><a href={`mailto:${profile.email}`}>{profile.email}</a></div>
+              <CopyButton text={profile.email} />
             </div>
             <div className="contact-item">
               <span className="icon-tile"><Phone size={17} aria-hidden="true" /></span>
@@ -297,12 +345,30 @@ export const Contact = () => {
 /* ---------------- Footer ---------------- */
 export const Footer = () => (
   <footer className="footer">
-    <div className="container footer-inner">
+    <div className="container footer-grid">
+      <div>
+        <div className="footer-brand"><span className="brand-mark">DM</span>{profile.name}</div>
+        <p>{profile.title}, {profile.affiliation}. {profile.tagline}</p>
+      </div>
+      <div>
+        <div className="footer-title">Explore</div>
+        <div className="footer-nav">
+          {NAV.map((n) => <a key={n.id} href={`#${n.id}`}>{n.label}</a>)}
+        </div>
+      </div>
+      <div>
+        <div className="footer-title">Contact</div>
+        <div className="footer-nav footer-col">
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <a href={profile.phoneHref}>{profile.phone}</a>
+          <a href={profile.cv} target="_blank" rel="noopener noreferrer">Download CV <ArrowRight size={13} aria-hidden="true" /></a>
+        </div>
+      </div>
+    </div>
+    <div className="container footer-bottom">
       <span>&copy; {new Date().getFullYear()} {profile.name}</span>
       <div className="footer-links">
-        <a href={profile.cv} target="_blank" rel="noopener noreferrer">CV</a>
-        {links.slice(0, 4).map((l) => <a key={l.id} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>)}
-        <a href="#top">Back to top</a>
+        {links.map((l) => <a key={l.id} href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>)}
       </div>
     </div>
   </footer>

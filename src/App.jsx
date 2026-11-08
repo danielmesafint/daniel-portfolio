@@ -2,11 +2,15 @@ import React from 'react';
 import Header from './components/Header';
 import Publications from './components/Publications';
 import Assistant from './components/Assistant';
+import { ProgressBar, BackToTop, useReveal } from './components/Enhancements';
 import { Hero, About, Research, Projects, Teaching, Experience, Service, Contact, Footer } from './components/Sections';
 
-const App = () => (
+const App = () => {
+  useReveal();
+  return (
   <>
-    <a href="#about" className="sr-only">Skip to content</a>
+    <ProgressBar />
+    <a href="#about" className="skip-link">Skip to content</a>
     <Header />
     <main>
       <Hero />
@@ -20,8 +24,10 @@ const App = () => (
       <Contact />
     </main>
     <Footer />
+    <BackToTop />
     <Assistant />
   </>
-);
+  );
+};
 
 export default App;

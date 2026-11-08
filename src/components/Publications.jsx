@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ExternalLink, Quote, Check, Download } from 'lucide-react';
+import { ExternalLink, Quote, Check, Download, Search } from 'lucide-react';
 import { publications, publicationStats, SCHOLAR_URL } from '../data/profile';
 import { SectionHead } from './Sections';
 
@@ -55,12 +55,20 @@ const copyText = async (text) => {
 const Publications = () => {
   const [tab, setTab] = useState('all');
   const [copied, setCopied] = useState(null);
+  const [query, setQuery] = useState('');
+  const [sort, setSort] = useState('year');
 
   const list = useMemo(
     () => publications
       .filter((p) => tab === 'all' || p.type === tab)
-      .sort((a, b) => b.year - a.year || b.citations - a.citations),
-    [tab]
+      .filter((p) => {
+        const q = query.trim().toLowerCase();
+        return !q || [p.title, p.venue, p.publisher, p.authors.join(' '), String(p.year)].join(' ').toLowerCase().includes(q);
+      })
+      .sort((a, b) => (sort === 'cited'
+        ? b.citations - a.citations || b.year - a.year
+        : b.year - a.year || b.citations - a.citations)),
+    [tab, query, sort]
   );
 
   const cite = async (p) => {
@@ -106,7 +114,15 @@ const Publications = () => {
               </button>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+            <label className="search">
+              <Search size={15} aria-hidden="true" />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search papers" aria-label="Search publications" />
+            </label>
+            <select className="select" value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort publications">
+              <option value="year">Newest first</option>
+              <option value="cited">Most cited</option>
+            </select>
             <button className="btn btn-outline btn-sm" onClick={exportBib}><Download size={14} aria-hidden="true" /> BibTeX</button>
             <a className="btn btn-outline btn-sm" href={SCHOLAR_URL} target="_blank" rel="noopener noreferrer">
               <ExternalLink size={14} aria-hidden="true" /> Google Scholar
@@ -114,6 +130,7 @@ const Publications = () => {
           </div>
         </div>
         <div className="pub-list">
+          {!list.length && <p className="muted">No publications match your search.</p>}
           {list.map((p) => (
             <article key={p.id} className="card pub">
               <div className="pub-year">{p.year}</div>
